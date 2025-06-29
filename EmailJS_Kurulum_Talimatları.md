@@ -30,6 +30,7 @@ Konu: Yeni Mesaj - {{user_name}}
 
 Gönderen: {{user_name}}
 Email: {{user_email}}
+Telefon: {{user_phone}}
 
 Mesaj:
 {{message}}

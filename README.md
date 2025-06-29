@@ -59,7 +59,8 @@ Proje ana dizininde `dev.json` dosyası oluşturun:
 ### 4. Template Parametreleri
 EmailJS template'inizde şu parametreleri kullanın:
 - `user_name`
-- `user_email` 
+- `user_email`
+- `user_phone`
 - `message`
 
 Detaylı kurulum için `EmailJS_Kurulum_Talimatları.md` dosyasını inceleyin.
@@ -156,8 +157,8 @@ Bu proje açık kaynak kodludur. Kişisel ve ticari kullanım için serbesttir.
 ## 📞 Destek
 
 Sorularınız için:
-- 📧 Email: `asya-ozcan@hotmail.com`
-- 📱 Telefon: `+90 (546) 510 89 29`
+- 📧 Email: `psikologasyaozcan@gmail.com`
+- 📱 Telefon: `Yakında eklenecek...`
 - 💼 LinkedIn: [asya-ozcan](https://www.linkedin.com/in/asya-ozcan/)
 - 📷 Instagram: [@psikologasyaozcan](https://www.instagram.com/psikologasyaozcan/)
 
