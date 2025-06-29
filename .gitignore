@@ -1,0 +1,58 @@
+# 🔒 Hassas Dosyalar
+# EmailJS gerçek key'leri içeren dosyalar
+dev.json
+config.js
+keys.js
+secrets.js
+*.env
+.env*
+
+# 🖼️ Geliştirme Görselleri
+# Orijinal/ham dosyalar
+*.psd
+*.ai
+*.sketch
+*.fig
+originals/
+raw-images/
+
+# 💻 IDE ve Editör Dosyaları
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 🗂️ Sistem Dosyaları
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# 📁 Geçici Dosyalar
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+
+# 🚫 Node.js (eğer ileride kullanılırsa)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 📦 Build Dosyları
+dist/
+build/
+*.min.js
+*.min.css
+
+# 📋 Kişisel Notlar
+notes.txt
+todo.txt
+PRIVATE.md 

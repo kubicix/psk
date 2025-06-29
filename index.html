@@ -1045,14 +1045,14 @@
     <footer class="footer">
         <div class="container">
             <div class="social-icons">
-                <a href="#" class="social-icon">
+                <a href="https://www.linkedin.com/in/asya-ozcan/" target="_blank" rel="noopener noreferrer" class="social-icon">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#" class="social-icon">
+                <a href="https://www.instagram.com/psikologasyaozcan/" target="_blank" rel="noopener noreferrer" class="social-icon">
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
-            <p>&copy; 2024 Psikolog Asya Özcan. Tüm hakları saklıdır.</p>
+            <p>&copy; 2025 Psikolog Asya Özcan. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
@@ -1108,51 +1108,74 @@
             }
         });
 
-        // EmailJS Initialization
-        (function(){
-            emailjs.init("CxkWQOTmq_t1KK4Yt"); // Bu kısmı kendi EmailJS public key'iniz ile değiştirin
-        })();
+        // EmailJS Configuration
+        let emailConfig = null;
+
+        // Load EmailJS configuration
+        async function loadEmailConfig() {
+            try {
+                // Önce fetch ile deneyelim (sunucu üzerinde çalışırsa)
+                const response = await fetch('./dev.json');
+                if (response.ok) {
+                    emailConfig = await response.json();
+                    emailjs.init(emailConfig.emailjs.publicKey);
+                    console.log('📧 EmailJS initialized from dev.json');
+                    return;
+                }
+            } catch (error) {
+                console.log('📄 dev.json fetch failed, using embedded config:', error.message);
+            }
+            
+            // Fallback: Embedded configuration (local development için)
+            try {
+                // dev.json dosyasından embedded config
+                emailConfig = {
+                    "emailjs": {
+                        "publicKey": "CxkWQOTmq_t1KK4Yt",
+                        "serviceId": "service_7ngk89o",
+                        "templateId": "template_uoxn32d"
+                    }
+                };
+                
+                emailjs.init(emailConfig.emailjs.publicKey);
+                console.log('📧 EmailJS initialized with embedded config');
+            } catch (error) {
+                console.error('⚠️ EmailJS initialization failed completely:', error);
+                alert('⚠️ EmailJS yapılandırması başarısız. Lütfen sayfa yenileyip tekrar deneyin.');
+            }
+        }
+
+        // Initialize when page loads
+        loadEmailConfig();
 
         /*
-        ⚠️ TEMPLATE DÜZELTME TALİMATI:
+        📧 EMAİLJS KURULUM TALİMATLARI:
         
-        Template ID: template_uoxn32d ✅ (Kodda güncellendi)
+        1. EmailJS hesabı oluşturun: https://www.emailjs.com/
+        2. Service oluşturun (Gmail, Outlook, vb.)
+        3. Template oluşturun - Şu parametreleri kullanın:
+           - user_name
+           - user_email  
+           - message
         
-        🔧 Template'deki FAZLA PARAMETRELERİ TEMİZLEYİN:
+        4. dev.json dosyası oluşturun:
+        {
+          "emailjs": {
+            "publicKey": "YOUR_PUBLIC_KEY",
+            "serviceId": "YOUR_SERVICE_ID", 
+            "templateId": "YOUR_TEMPLATE_ID"
+          }
+        }
         
-        SADECE ŞU 3 PARAMETREYİ KULLANIN:
-        - user_name
-        - user_email
-        - message
-        
-        DİĞER PARAMETRELERİ SİLİN: (name, email, time vs.)
-        
-        📧 TEMİZLENMİŞ TEMPLATE CONTENT:
+        📧 ÖNERİLEN TEMPLATE İÇERİĞİ:
         
         <div style="font-family: system-ui, sans-serif, Arial; font-size: 12px">
           <div>{{user_name}} tarafından bir mesaj alındı. Lütfen en kısa sürede yanıtlayın.</div>
-          <div
-            style="
-              margin-top: 20px;
-              padding: 15px 0;
-              border-width: 1px 0;
-              border-style: dashed;
-              border-color: lightgrey;
-            "
-          >
+          <div style="margin-top: 20px; padding: 15px 0; border-width: 1px 0; border-style: dashed; border-color: lightgrey;">
             <table role="presentation">
               <tr>
                 <td style="vertical-align: top">
-                  <div
-                    style="
-                      padding: 6px 10px;
-                      margin: 0 10px;
-                      background-color: aliceblue;
-                      border-radius: 5px;
-                      font-size: 26px;
-                    "
-                    role="img"
-                  >
+                  <div style="padding: 6px 10px; margin: 0 10px; background-color: aliceblue; border-radius: 5px; font-size: 26px;" role="img">
                     &#x1F464;
                   </div>
                 </td>
@@ -1179,6 +1202,12 @@
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Check if config is loaded
+            if (!emailConfig) {
+                alert('⚠️ EmailJS yapılandırması yüklenmedi. Lütfen sayfayı yenileyin.');
+                return;
+            }
+            
             // Button states
             const sendBtn = document.getElementById('send-btn');
             const btnText = document.getElementById('btn-text');
@@ -1189,8 +1218,8 @@
             btnLoading.style.display = 'inline';
             sendBtn.disabled = true;
             
-            // EmailJS send
-            emailjs.sendForm('service_7ngk89o', 'template_uoxn32d', this)
+            // EmailJS send with dynamic config
+            emailjs.sendForm(emailConfig.emailjs.serviceId, emailConfig.emailjs.templateId, this)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     

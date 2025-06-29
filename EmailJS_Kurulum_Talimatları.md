@@ -46,21 +46,25 @@ Bu mesaj web sitenizden gönderilmiştir.
 2. **"API Keys"** bölümünde **Public Key**'i bulun
 3. Bu key'i not alın (örnek: `user_abcdefgh12345`)
 
-### 5️⃣ Web Sitesinde Güncelleme
+### 5️⃣ dev.json Dosyası Oluşturma
 
-`index.html` dosyasında şu satırları bulun ve kendi değerlerinizle değiştirin:
+Proje ana dizininde `dev.json` dosyası oluşturun ve kendi key'lerinizi ekleyin:
 
-```javascript
-// Bu satırı bulun:
-emailjs.init("YOUR_PUBLIC_KEY");
-// Değiştirin:
-emailjs.init("user_abcdefgh12345");
-
-// Bu satırı bulun:
-emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-// Değiştirin:
-emailjs.sendForm('service_abc123', 'template_xyz789', this)
+```json
+{
+  "emailjs": {
+    "publicKey": "user_abcdefgh12345",
+    "serviceId": "service_abc123", 
+    "templateId": "template_xyz789"
+  }
+}
 ```
+
+**Alternatif:** `dev.json.example` dosyasını kopyalayın:
+```bash
+cp dev.json.example dev.json
+```
+Sonra `dev.json` dosyasını kendi key'lerinizle düzenleyin.
 
 ## ✅ Test Etme
 
@@ -88,6 +92,13 @@ emailjs.sendForm('service_abc123', 'template_xyz789', this)
 - Temel support
 
 Daha fazla mail gönderimi için ücretli planlara geçebilirsiniz.
+
+## 🔒 Güvenlik Notu
+
+- `dev.json` dosyası `.gitignore` ile korunuyor
+- Bu dosyayı asla public repo'ya commit etmeyin
+- Production'da mutlaka `dev.json` dosyasını oluşturun
+- Key'lerinizi başka kimseyle paylaşmayın
 
 ## 📞 Yardım
 
