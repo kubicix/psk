@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#FAF6EE">
     <title>Psikolog Asya Özcan | Çocuk, Genç ve Yetişkin Psikolojisi | İzmit, Kocaeli</title>
 
     <!-- SEO Meta Tags -->
@@ -41,14 +42,7 @@
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
         "opens": "09:00",
         "closes": "18:00"
       },
@@ -59,7 +53,7 @@
     }
     </script>
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://psikologasyaozcan.online">
     <meta property="og:title" content="Psikolog Asya Özcan | Çocuk ve Yetişkin Psikolojisi">
@@ -81,7 +75,6 @@
     <meta name="twitter:image" content="https://psikologasyaozcan.online/logo.png">
     <meta name="twitter:image:alt" content="Psikolog Asya Özcan Logo">
 
-    <!-- Additional Meta Tags -->
     <meta name="geo.region" content="TR-41">
     <meta name="geo.placename" content="İzmit, Kocaeli">
     <meta name="geo.position" content="40.7648;29.9342">
@@ -92,1221 +85,812 @@
     <link rel="shortcut icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
 
-    <!-- Bootstrap 5 CSS -->
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Bootstrap 5 CSS (grid only-ish; we override most components) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Fraunces (display serif) + Manrope (body sans) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Manrope:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
+        /* ============================================
+           DESIGN TOKENS
+           ============================================ */
         :root {
-            --primary-color: #E6E6FA;
-            /* Lavender */
-            --secondary-color: #B6D7FF;
-            /* Pastel Blue */
-            --accent-color: #9370DB;
-            /* Medium Slate Blue */
-            --text-dark: #2C3E50;
-            /* Dark Blue Gray */
-            --text-light: #6C757D;
-            /* Bootstrap muted */
-            --background-light: #F8F9FF;
-            /* Very Light Blue */
-            --white: #FFFFFF;
+            /* Palette — warm editorial wellness */
+            --ink-900: #1F2233;
+            --ink-700: #3A3F55;
+            --ink-500: #5A6079;
+            --ink-300: #8B91A8;
+
+            --cream-50: #FBF8F2;
+            --cream-100: #F5EFE4;
+            --cream-200: #ECE3D2;
+            --cream-300: #DDD0B6;
+
+            --accent: #6B5B95;
+            --accent-deep: #4F4172;
+            --accent-soft: #B8A8D9;
+            --accent-glow: rgba(107, 91, 149, 0.12);
+
+            --sage: #8FA68E;
+            --rose: #C9837A;
+            --gold: #C5A572;
+
+            /* Functional */
+            --bg: var(--cream-50);
+            --bg-elevated: #FFFFFF;
+            --text: var(--ink-900);
+            --text-muted: var(--ink-500);
+            --border: rgba(31, 34, 51, 0.08);
+            --border-strong: rgba(31, 34, 51, 0.16);
+
+            /* Typography */
+            --font-display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            /* Sizing */
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-xl: 32px;
+
+            /* Shadows — soft, layered */
+            --shadow-sm: 0 1px 2px rgba(31, 34, 51, 0.04), 0 1px 3px rgba(31, 34, 51, 0.04);
+            --shadow-md: 0 4px 12px rgba(31, 34, 51, 0.05), 0 2px 4px rgba(31, 34, 51, 0.04);
+            --shadow-lg: 0 16px 40px rgba(31, 34, 51, 0.08), 0 6px 16px rgba(31, 34, 51, 0.05);
+            --shadow-xl: 0 28px 60px rgba(31, 34, 51, 0.12), 0 12px 24px rgba(31, 34, 51, 0.06);
+
+            /* Motion */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+            --dur-fast: 220ms;
+            --dur-base: 420ms;
+            --dur-slow: 720ms;
+
+            /* Layout */
+            --nav-h: 78px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); -webkit-text-size-adjust: 100%; }
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--white);
+            margin: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.65;
+            color: var(--text);
+            background-color: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-            /* Fixed navbar için offset */
+        /* Subtle paper-grain overlay for warmth */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.13 0 0 0 0 0.2 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
         }
 
-        /* Navigation */
+        img { max-width: 100%; height: auto; display: block; }
+
+        a { color: inherit; text-decoration: none; transition: color var(--dur-fast) var(--ease-out); }
+        a:hover { color: var(--accent); }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        ::selection { background: var(--accent); color: var(--cream-50); }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+            color: var(--text);
+            margin: 0 0 0.4em;
+            font-variation-settings: "opsz" 144, "SOFT" 50;
+        }
+
+        h1 { font-size: clamp(2.6rem, 5.2vw + 0.5rem, 4.8rem); font-weight: 350; }
+        h2 { font-size: clamp(2rem, 3vw + 0.8rem, 3.2rem); }
+        h3 { font-size: clamp(1.5rem, 1.4vw + 0.8rem, 2rem); }
+        h4 { font-size: 1.25rem; font-weight: 500; letter-spacing: -0.01em; }
+        h5 { font-size: 0.92rem; font-weight: 600; font-family: var(--font-body); letter-spacing: 0.04em; text-transform: uppercase; }
+
+        p { margin: 0 0 1.1em; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 22px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.6;
+        }
+
+        .display-serif-italic {
+            font-style: italic;
+            font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+            color: var(--accent);
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .section {
+            padding: clamp(72px, 9vw, 130px) 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(48px, 6vw, 78px);
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title h2 { margin-bottom: 14px; }
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            width: 56px;
+            height: 1px;
+            background: var(--border-strong);
+            margin: 28px auto 0;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
         .navbar {
-            background-color: var(--white) !important;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(251, 248, 242, 0.72) !important;
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: background-color var(--dur-base) var(--ease-out),
+                        border-color var(--dur-base) var(--ease-out),
+                        box-shadow var(--dur-base) var(--ease-out);
+            padding: 14px 0;
+            z-index: 1030;
+        }
+
+        .navbar.is-scrolled {
+            background-color: rgba(251, 248, 242, 0.92) !important;
+            border-bottom-color: var(--border);
+            box-shadow: 0 2px 30px rgba(31, 34, 51, 0.04);
         }
 
         .navbar-brand {
-            font-weight: 600;
-            color: var(--accent-color) !important;
-            font-size: 1.4rem;
-            display: flex;
+            font-family: var(--font-display);
+            font-weight: 400;
+            color: var(--text) !important;
+            font-size: 1.18rem;
+            letter-spacing: -0.01em;
+            display: inline-flex;
             align-items: center;
-            text-decoration: none;
+            gap: 12px;
         }
 
         .navbar-logo {
-            height: 40px;
+            height: 38px;
             width: auto;
-            margin-right: 12px;
-            transition: transform 0.3s ease;
+            transition: transform var(--dur-base) var(--ease-out);
         }
 
-        .navbar-brand:hover .navbar-logo {
-            transform: scale(1.1);
-        }
+        .navbar-brand:hover .navbar-logo { transform: rotate(-6deg) scale(1.06); }
 
         .nav-link {
-            color: var(--text-dark) !important;
+            color: var(--text) !important;
+            font-family: var(--font-body);
             font-weight: 500;
-            margin: 0 10px;
-            transition: all 0.3s ease;
+            font-size: 0.93rem;
+            letter-spacing: 0.01em;
+            margin: 0 4px;
+            padding: 10px 14px !important;
+            border-radius: var(--radius-sm);
             position: relative;
-            padding: 8px 12px !important;
-            border-radius: 8px;
+            transition: color var(--dur-fast) var(--ease-out);
         }
 
-        .nav-link::before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 60%;
-            height: 2px;
-            background: var(--accent-color);
-            transition: transform 0.3s ease;
+            bottom: 4px;
+            left: 14px;
+            right: 14px;
+            height: 1px;
+            background: var(--accent);
+            transform-origin: left center;
+            transform: scaleX(0);
+            transition: transform var(--dur-base) var(--ease-out);
         }
 
-        .nav-link:hover {
-            color: var(--accent-color) !important;
-            background-color: rgba(147, 112, 219, 0.05);
-        }
+        .nav-link:hover { color: var(--accent) !important; }
+        .nav-link:hover::after { transform: scaleX(1); }
+        .nav-link.is-active { color: var(--accent) !important; }
+        .nav-link.is-active::after { transform: scaleX(1); }
 
-        .nav-link:hover::before {
-            transform: translateX(-50%) scaleX(1);
+        .navbar-toggler {
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-elevated);
         }
+        .navbar-toggler:focus { box-shadow: 0 0 0 3px var(--accent-glow); }
+        .navbar-toggler i { color: var(--accent); font-size: 1.05rem; }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            min-height: 100vh;
-            display: flex;
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn-primary-custom {
+            display: inline-flex;
             align-items: center;
+            gap: 12px;
+            background-color: var(--ink-900);
+            color: var(--cream-50);
+            border: 1px solid var(--ink-900);
+            padding: 16px 32px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border-radius: 999px;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
-            /* Navbar için space */
+            transition: transform var(--dur-base) var(--ease-out),
+                        box-shadow var(--dur-base) var(--ease-out),
+                        background-color var(--dur-base) var(--ease-out);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary-custom .btn-arrow {
+            display: inline-flex;
+            transition: transform var(--dur-base) var(--ease-out);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--accent-deep);
+            border-color: var(--accent-deep);
+            color: var(--cream-50);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .btn-primary-custom:hover .btn-arrow { transform: translateX(4px); }
+        .btn-primary-custom:active { transform: translateY(0); }
+        .btn-primary-custom:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 0.01em;
+            padding: 14px 22px;
+            border-radius: 999px;
+            border: 1px solid var(--border-strong);
+            background: transparent;
+            transition: all var(--dur-base) var(--ease-out);
+        }
+        .btn-ghost:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: calc(var(--nav-h) + 40px) 0 80px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--bg);
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-            opacity: 0.3;
+            top: -10%;
+            right: -10%;
+            width: 70vw;
+            height: 70vw;
+            max-width: 900px;
+            max-height: 900px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%,
+                rgba(184, 168, 217, 0.45) 0%,
+                rgba(184, 168, 217, 0.15) 35%,
+                transparent 70%);
+            filter: blur(20px);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            margin-bottom: 30px;
-            font-weight: 400;
-        }
-
-        .btn-primary-custom {
-            background-color: var(--accent-color);
-            border: none;
-            padding: 14px 35px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 30px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(147, 112, 219, 0.3);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-primary-custom::before {
+        .hero::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: linear-gradient(135deg, #7B68EE, #9370DB);
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-            border-radius: 30px;
+            bottom: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            max-width: 600px;
+            max-height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(143, 166, 142, 0.25) 0%,
+                rgba(143, 166, 142, 0.05) 50%,
+                transparent 80%);
+            filter: blur(30px);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .btn-primary-custom:hover::before {
+        .hero .container { position: relative; z-index: 2; }
+
+        .hero-content h1 { margin-bottom: 24px; }
+        .hero-content h1 .display-serif-italic { display: inline-block; }
+        .hero-content .lead {
+            font-size: 1.08rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin-bottom: 36px;
+            line-height: 1.75;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px 38px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            max-width: 540px;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-meta-item i {
+            color: var(--accent);
+            font-size: 0.95rem;
+        }
+
+        /* Hero portrait — editorial frame */
+        .hero-portrait-wrap {
+            position: relative;
+            max-width: 460px;
+            margin-left: auto;
+            aspect-ratio: 4 / 5;
+        }
+
+        .hero-portrait {
+            position: relative;
             width: 100%;
+            height: 100%;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transform: rotate(-1.5deg);
+            transition: transform var(--dur-slow) var(--ease-out);
         }
-
-        .btn-primary-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(147, 112, 219, 0.5);
-            color: var(--white);
+        .hero-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
         }
+        .hero-portrait-wrap:hover .hero-portrait { transform: rotate(0deg) scale(1.01); }
 
-        .btn-primary-custom:active {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(147, 112, 219, 0.4);
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
+        .hero-portrait-frame {
             position: absolute;
-            bottom: -10px;
+            inset: -14px;
+            border: 1px solid var(--border-strong);
+            border-radius: calc(var(--radius-xl) + 14px);
+            transform: rotate(2deg);
+            pointer-events: none;
+            transition: transform var(--dur-slow) var(--ease-out);
+        }
+        .hero-portrait-wrap:hover .hero-portrait-frame { transform: rotate(0deg); }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -22px;
+            left: -22px;
+            background: var(--bg-elevated);
+            padding: 16px 22px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 3;
+        }
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--sage);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(143, 166, 142, 0.25);
+            animation: ping 2.4s var(--ease-out) infinite;
+        }
+        @keyframes ping {
+            0%, 100% { box-shadow: 0 0 0 4px rgba(143, 166, 142, 0.25); }
+            50% { box-shadow: 0 0 0 9px rgba(143, 166, 142, 0.08); }
+        }
+        .hero-badge-text { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+        .hero-badge-sub { font-size: 0.72rem; color: var(--text-muted); }
+
+        .hero-scroll-cue {
+            position: absolute;
+            bottom: 28px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-            border-radius: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+        .hero-scroll-cue::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--text-muted), transparent);
+            animation: scroll-pulse 2.2s ease-in-out infinite;
+        }
+        @keyframes scroll-pulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 0.9; transform: scaleY(1); }
         }
 
-        .section-title p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 20px auto 0;
-        }
-
-        /* About Section */
+        /* ============================================
+           ABOUT
+           ============================================ */
         .about-section {
-            background-color: var(--background-light);
+            background: linear-gradient(180deg, var(--cream-50) 0%, var(--cream-100) 100%);
+        }
+
+        .about-portrait-wrap {
+            position: relative;
+            max-width: 360px;
+            margin: 0 auto;
         }
 
         .profile-img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: var(--radius-xl);
             object-fit: cover;
-            border: 8px solid var(--white);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            object-position: center 22%;
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--dur-slow) var(--ease-out);
+        }
+        .profile-img:hover { transform: scale(1.02); }
+
+        .about-portrait-deco {
+            position: absolute;
+            top: -18px;
+            right: -18px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--cream-200);
+            z-index: -1;
+        }
+        .about-portrait-deco-2 {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 1px dashed var(--border-strong);
+            z-index: -1;
         }
 
-        .profile-img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        .about-text h3 { margin-bottom: 24px; }
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.85;
+            margin-bottom: 1.3em;
         }
 
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-light);
+        .about-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
         }
+        .credential-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+        .credential-pill i { color: var(--accent); font-size: 0.78rem; }
 
-        /* Services Section */
+        /* ============================================
+           SERVICES
+           ============================================ */
+        .services-section { background: var(--bg); }
+
         .service-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(230, 230, 250, 0.5);
+            background: var(--bg-elevated);
+            border-radius: var(--radius-lg);
+            padding: 36px 30px;
+            border: 1px solid var(--border);
             height: 100%;
             position: relative;
             overflow: hidden;
+            transition: transform var(--dur-base) var(--ease-out),
+                        border-color var(--dur-base) var(--ease-out),
+                        box-shadow var(--dur-base) var(--ease-out);
         }
 
         .service-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-            transform: scaleX(0);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            inset: 0;
+            background: radial-gradient(circle at 100% 0%, var(--accent-glow) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity var(--dur-base) var(--ease-out);
+            pointer-events: none;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(147, 112, 219, 0.2);
-            border-color: rgba(147, 112, 219, 0.3);
+            transform: translateY(-6px);
+            border-color: var(--accent-soft);
+            box-shadow: var(--shadow-lg);
         }
+        .service-card:hover::before { opacity: 1; }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotateY(360deg);
+        .service-num {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            margin-bottom: 18px;
+            display: block;
+            font-feature-settings: "tnum" 1;
         }
 
         .service-icon {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
+            width: 56px;
+            height: 56px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cream-100);
+            color: var(--accent);
+            border-radius: var(--radius-md);
+            font-size: 1.4rem;
+            margin-bottom: 22px;
+            transition: background-color var(--dur-base) var(--ease-out),
+                        transform var(--dur-base) var(--ease-out);
+        }
+        .service-card:hover .service-icon {
+            background: var(--accent);
+            color: var(--cream-50);
+            transform: rotate(-8deg);
         }
 
         .service-card h4 {
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: 1.4rem;
+            letter-spacing: -0.01em;
         }
-
         .service-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            background-color: var(--background-light);
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            margin-bottom: 30px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 15px;
-            left: 25px;
-            font-size: 4rem;
-            color: rgba(147, 112, 219, 0.1);
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(147, 112, 219, 0.15);
-            border-color: rgba(147, 112, 219, 0.2);
-        }
-
-        .testimonial-quote {
-            font-size: 1.05rem;
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--accent-color);
-            font-size: 1rem;
-            position: relative;
-        }
-
-        .testimonial-author::before {
-            content: '—';
-            margin-right: 8px;
-            color: var(--accent-color);
-        }
-
-        /* Contact Section */
-        .contact-form {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 45px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-form:hover {
-            box-shadow: 0 15px 50px rgba(147, 112, 219, 0.15);
-        }
-
-        .form-control {
-            border: 2px solid rgba(230, 230, 250, 0.5);
-            border-radius: 12px;
-            padding: 14px 18px;
-            font-size: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background-color: var(--background-light);
-        }
-
-        .form-control:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 4px rgba(147, 112, 219, 0.1);
-            background-color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .form-control:hover:not(:focus) {
-            border-color: rgba(147, 112, 219, 0.3);
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 20px;
-            padding: 45px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-info::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            padding: 15px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .contact-item:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: translateX(5px);
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            margin-right: 20px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover i {
-            transform: scale(1.1) rotate(5deg);
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        .contact-item a:hover {
-            color: var(--accent-color) !important;
-            text-decoration: underline !important;
-        }
-
-        .contact-item div h5 {
-            color: var(--text-dark);
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .contact-item div p {
-            color: var(--text-light);
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            line-height: 1.7;
             margin: 0;
         }
 
-        /* Footer */
-        .footer {
-            background-color: var(--text-dark);
-            color: var(--white);
-            padding: 40px 0;
-            text-align: center;
+        /* Wide service card (location) */
+        .service-card-wide {
+            text-align: left;
         }
-
-        .social-icons {
-            margin-bottom: 20px;
-        }
-
-        .social-icon {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent-color);
-            color: var(--white);
-            border-radius: 50%;
-            line-height: 50px;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background-color: #7B68EE;
-            transform: translateY(-3px);
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        /* Responsive Design */
-
-        /* Maps responsive styling */
-        .maps-image {
-            transition: all 0.3s ease;
-        }
-
-        .maps-image:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        /* iPhone SE and very small devices (375px and below) */
-        @media (max-width: 375px) {
-            .maps-image {
-                max-width: 200px !important;
-                margin: 0 auto;
-            }
-
-            .hero {
-                min-height: 90vh;
-                padding: 100px 0 40px;
-                /* Daha fazla üst padding mobilde */
-            }
-
-            .hero .col-lg-6:last-child {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-                margin-bottom: 15px;
-                line-height: 1.2;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
-
-            .hero .lead {
-                font-size: 0.9rem;
-                margin-bottom: 25px !important;
-            }
-
-            .hero-content {
-                text-align: center;
-            }
-
-            /* iPhone SE hero resim düzenlemesi */
-            .hero .col-lg-6:last-child {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                margin-top: 20px !important;
-            }
-
-            .hero .col-lg-6:last-child>div[style*="width: 400px"] {
-                width: 250px !important;
-                height: 250px !important;
-                margin: 15px auto !important;
-            }
-
-            .hero .col-lg-6:last-child img[style*="width: 360px"] {
-                width: 220px !important;
-                height: 220px !important;
-            }
-
-            .section {
-                padding: 50px 0;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-                margin-bottom: 10px;
-            }
-
-            .section-title p {
-                font-size: 0.95rem;
-                padding: 0 15px;
-            }
-
-            .about-text h3 {
-                font-size: 1.3rem;
-            }
-
-            .about-text p {
-                font-size: 0.95rem;
-            }
-
-            .profile-img {
-                width: 200px !important;
-                height: 200px !important;
-                margin-bottom: 30px;
-            }
-
-            .service-card {
-                padding: 25px 20px;
-                margin-bottom: 20px;
-            }
-
-            .service-icon {
-                font-size: 2.5rem;
-            }
-
-            .service-card h4 {
-                font-size: 1.1rem;
-            }
-
-            .service-card p {
-                font-size: 0.9rem;
-            }
-
-            .testimonial-card {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-
-            .testimonial-quote {
-                font-size: 0.95rem;
-            }
-
-            .contact-form,
-            .contact-info {
-                margin-bottom: 30px;
-                padding: 25px;
-            }
-
-            .contact-item {
-                margin-bottom: 20px;
-            }
-
-            .contact-item i {
-                font-size: 1.2rem;
-            }
-
-            .navbar-brand {
-                font-size: 1.1rem;
-            }
-
-            .navbar-logo {
-                height: 30px;
-                margin-right: 8px;
-            }
-
-            .btn-primary-custom {
-                padding: 10px 25px;
-                font-size: 0.95rem;
-            }
-        }
-
-        /* Small Mobile devices (376px to 480px) */
-        @media (min-width: 376px) and (max-width: 480px) {
-            .maps-image {
-                max-width: 220px !important;
-            }
-
-            .hero .col-lg-6:last-child {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-            }
-
-            .hero .col-lg-6:last-child>div[style*="width: 400px"] {
-                width: 280px !important;
-                height: 280px !important;
-                margin: 20px auto !important;
-            }
-
-            .hero .col-lg-6:last-child img[style*="width: 360px"] {
-                width: 250px !important;
-                height: 250px !important;
-            }
-
-            .hero h1 {
-                font-size: 2.3rem;
-                line-height: 1.2;
-            }
-
-            .hero .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero .lead {
-                font-size: 0.95rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .about-text h3 {
-                font-size: 1.4rem;
-            }
-
-            .profile-img {
-                width: 220px !important;
-                height: 220px !important;
-            }
-
-            .service-card {
-                padding: 30px 25px;
-            }
-        }
-
-        /* Mobile devices (481px to 767px) */
-        @media (min-width: 481px) and (max-width: 767px) {
-            .maps-image {
-                max-width: 250px !important;
-            }
-
-            .hero .col-lg-6:last-child {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-            }
-
-            .hero .col-lg-6:last-child>div[style*="width: 400px"] {
-                width: 320px !important;
-                height: 320px !important;
-                margin: 20px auto !important;
-            }
-
-            .hero .col-lg-6:last-child img[style*="width: 360px"] {
-                width: 280px !important;
-                height: 280px !important;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.3rem;
-            }
-
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .profile-img {
-                width: 250px !important;
-                height: 250px !important;
-            }
-        }
-
-        /* Tablets (768px to 991px) */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .maps-image {
-                max-width: 280px !important;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.4rem;
-            }
-
-            .section-title h2 {
-                font-size: 2.3rem;
-            }
-
-            .service-card {
-                margin-bottom: 30px;
-            }
-
-            .contact-form,
-            .contact-info {
-                margin-bottom: 40px;
-            }
-        }
-
-        /* Small laptops (992px to 1199px) */
-        @media (min-width: 992px) and (max-width: 1199px) {
-            .maps-image {
-                max-width: 300px !important;
-            }
-
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-
-            .container {
-                max-width: 960px;
-            }
-        }
-
-        /* Large screens (1200px and above) */
-        @media (min-width: 1200px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-        }
-
-        /* Universal mobile fixes */
-        @media (max-width: 767px) {
-
-            /* Smooth scrolling mobile offset */
-            html {
-                scroll-padding-top: 90px;
-                /* Mobilde navbar için offset */
-            }
-
-            /* Hero section mobile optimization */
-            .hero {
-                text-align: center;
-                padding-top: 90px;
-                /* Mobil için navbar padding */
-            }
-
-            .hero .col-lg-6:last-child {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                margin-top: 30px;
-            }
-
-            .hero .col-lg-6:last-child .text-center {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                width: 100% !important;
-            }
-
-
-
-
-
-            /* Section spacing */
-            .section {
-                padding: 60px 0;
-            }
-
-            .section-title {
-                margin-bottom: 40px;
-            }
-
-            /* About section mobile */
-            .about-section .row {
-                text-align: center;
-            }
-
-            .about-text {
-                margin-top: 30px;
-            }
-
-            /* Services mobile layout */
-            .service-card {
-                height: auto;
-            }
-
-            /* Testimonials mobile */
-            .testimonial-card {
-                margin-bottom: 25px;
-            }
-
-            /* Contact section mobile */
-            .contact-form h4,
-            .contact-info h4 {
-                font-size: 1.3rem;
-            }
-
-            /* Navigation mobile */
-            .navbar {
-                padding: 15px 0;
-                min-height: 70px;
-                /* Minimum navbar yüksekliği */
-            }
-
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-
-            .navbar-logo {
-                height: 35px;
-                margin-right: 10px;
-            }
-
-            .navbar-toggler {
-                border: none;
-                padding: 4px 8px;
-            }
-
-            .navbar-collapse {
-                margin-top: 15px;
-                background-color: rgba(255, 255, 255, 0.98);
-                border-radius: 10px;
-                padding: 10px;
-                margin: 10px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-link {
-                padding: 8px 15px;
-                text-align: center;
-            }
-
-            /* Footer mobile */
-            .footer {
-                padding: 30px 0;
-            }
-
-            .social-icon {
-                width: 45px;
-                height: 45px;
-                line-height: 45px;
-                font-size: 1.1rem;
-                margin: 0 8px;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-            z-index: 9999;
-            transition: width 0.1s ease;
-        }
-
-        /* Additional mobile optimizations */
-        @media (max-width: 575px) {
-            .container {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            /* Form optimizations */
-            .form-control {
-                font-size: 16px;
-                /* Prevents zoom on iOS */
-                padding: 10px 12px;
-            }
-
-            .form-label {
-                font-size: 0.95rem;
-                margin-bottom: 5px;
-            }
-
-            /* Button optimizations */
-            .btn-primary-custom {
-                width: 100%;
-                margin-top: 10px;
-                min-height: 44px;
-                /* iOS touch target size */
-            }
-
-            /* Text readability */
-            body {
-                font-size: 14px;
-            }
-
-            .lead {
-                font-size: 1rem !important;
-            }
-        }
-
-        /* Landscape mobile optimization */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .hero {
-                min-height: 100vh;
-                padding: 80px 0 20px;
-                /* Landscape'de de navbar için space */
-            }
-
-            .hero .col-lg-6:last-child>div[style*="width: 400px"] {
-                width: 250px !important;
-                height: 250px !important;
-            }
-
-            .hero .col-lg-6:last-child img[style*="width: 360px"] {
-                width: 220px !important;
-                height: 220px !important;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-                margin-bottom: 10px;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-                margin-bottom: 15px;
-            }
-
-            .hero .lead {
-                font-size: 0.9rem;
-                margin-bottom: 20px !important;
-            }
-
-            .section {
-                padding: 40px 0;
-            }
-        }
-
-        /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi) {
-
-            .service-icon,
-            .hero .fas {
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-        }
-
-        /* Floating Instagram Button */
-        .floating-instagram-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            border-radius: 50%;
+        .service-wide-head {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            box-shadow: 0 4px 20px rgba(188, 24, 136, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            text-decoration: none;
-            cursor: pointer;
-            animation: pulse 2s infinite;
+            align-items: flex-start;
+            gap: 22px;
+            margin-bottom: 18px;
         }
-
-        .floating-instagram-btn:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 6px 30px rgba(188, 24, 136, 0.6);
-            color: white;
+        .service-wide-head .service-icon { margin-bottom: 0; flex-shrink: 0; }
+        .service-wide-head h4 { margin-bottom: 4px; }
+        .service-wide-head .service-sub {
+            margin: 0;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.92rem;
         }
+        .service-wide-body { color: var(--text-muted); margin-bottom: 26px; line-height: 1.7; }
 
-        .floating-instagram-btn i {
-            transition: transform 0.3s ease;
-        }
-
-        .floating-instagram-btn:hover i {
-            transform: rotate(15deg);
-        }
-
-        .instagram-tooltip {
-            position: absolute;
-            right: 70px;
-            background-color: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            white-space: nowrap;
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .floating-instagram-btn:hover .instagram-tooltip {
-            opacity: 1;
-            visibility: visible;
-            right: 75px;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                box-shadow: 0 4px 20px rgba(188, 24, 136, 0.4);
-            }
-
-            50% {
-                box-shadow: 0 4px 30px rgba(188, 24, 136, 0.7);
-            }
-        }
-
-        /* Mobile responsive */
-        @media (max-width: 768px) {
-            .floating-instagram-btn {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 24px;
-            }
-
-            .instagram-tooltip {
-                display: none;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .floating-instagram-btn {
-                width: 50px;
-                height: 50px;
-                bottom: 15px;
-                right: 15px;
-                font-size: 22px;
-            }
-        }
-
-        /* Loading Animation */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .map-frame {
+            position: relative;
             width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+        .map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+        /* ============================================
+           TESTIMONIALS
+           ============================================ */
+        .testimonials-section {
+            background: linear-gradient(180deg, var(--cream-100) 0%, var(--cream-50) 100%);
+        }
+
+        .testimonial-card {
+            background: var(--bg-elevated);
+            border-radius: var(--radius-lg);
+            padding: 38px 32px 32px;
+            border: 1px solid var(--border);
+            position: relative;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transition: transform var(--dur-base) var(--ease-out),
+                        box-shadow var(--dur-base) var(--ease-out);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 12px;
+            left: 24px;
+            font-family: var(--font-display);
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--accent-soft);
+            opacity: 0.55;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-quote {
+            position: relative;
+            z-index: 1;
+            font-family: var(--font-display);
+            font-weight: 350;
+            font-size: 1.08rem;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 18px 0 26px;
+            letter-spacing: -0.005em;
+        }
+
+        .testimonial-author {
             display: flex;
             align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+        }
+        .testimonial-author::before {
+            content: '';
+            width: 22px;
+            height: 1px;
+            background: var(--accent);
         }
 
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(147, 112, 219, 0.2);
-            border-top: 4px solid var(--accent-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Smooth Scroll Snap */
-        @media (min-width: 992px) {
-            html {
-                scroll-snap-type: y proximity;
-            }
-
-            .section {
-                scroll-snap-align: start;
-            }
-        }
-
-        /* Google Business Profile Card */
+        /* ============================================
+           GOOGLE BUSINESS PROFILE CARD
+           ============================================ */
         .gbp-card {
-            max-width: 480px;
-            margin: 40px auto 0;
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+            max-width: 560px;
+            margin: 56px auto 0;
+            background: var(--bg-elevated);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
-            font-family: 'Google Sans', 'Roboto', 'Inter', Arial, sans-serif;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Google Sans', 'Roboto', var(--font-body), sans-serif;
+            transition: transform var(--dur-base) var(--ease-out),
+                        box-shadow var(--dur-base) var(--ease-out);
+            border: 1px solid var(--border);
         }
-
-        .gbp-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
-        }
+        .gbp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
 
         .gbp-card-header {
             background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 40%, #bbdefb 100%);
-            padding: 28px 24px 20px;
+            padding: 28px 24px 22px;
             display: flex;
             align-items: center;
             gap: 18px;
             position: relative;
         }
-
         .gbp-card-header::after {
             content: '';
             position: absolute;
-            top: 12px;
-            right: 14px;
-            width: 28px;
-            height: 28px;
+            top: 14px;
+            right: 16px;
+            width: 26px;
+            height: 26px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234285F4' d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'/%3E%3Cpath fill='%2334A853' d='M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z'/%3E%3Cpath fill='%23FBBC05' d='M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z'/%3E%3Cpath fill='%23EA4335' d='M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z'/%3E%3C/svg%3E");
             background-size: contain;
             background-repeat: no-repeat;
@@ -1319,12 +903,13 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: center 20%;
-            border: 3px solid var(--white);
+            border: 3px solid #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
             flex-shrink: 0;
         }
 
         .gbp-info h3 {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
             font-size: 1.15rem;
             font-weight: 600;
             color: #202124;
@@ -1332,8 +917,8 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            letter-spacing: 0;
         }
-
         .gbp-verified {
             display: inline-flex;
             align-items: center;
@@ -1344,152 +929,36 @@
             border-radius: 50%;
             flex-shrink: 0;
         }
+        .gbp-verified svg { width: 11px; height: 11px; fill: white; }
+        .gbp-subtitle { font-size: 0.82rem; color: #5f6368; margin: 0; }
+        .gbp-rating { display: flex; align-items: center; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+        .gbp-rating-score { font-size: 0.9rem; font-weight: 600; color: #202124; }
+        .gbp-stars { display: flex; gap: 1px; }
+        .gbp-stars svg { width: 14px; height: 14px; fill: #FBBC05; }
+        .gbp-review-count { font-size: 0.78rem; color: #1a73e8; cursor: pointer; }
+        .gbp-review-count:hover { text-decoration: underline; }
 
-        .gbp-verified svg {
-            width: 11px;
-            height: 11px;
-            fill: white;
-        }
-
-        .gbp-subtitle {
-            font-size: 0.82rem;
-            color: #5f6368;
-            margin: 0;
-        }
-
-        .gbp-rating {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 6px;
-        }
-
-        .gbp-rating-score {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #202124;
-        }
-
-        .gbp-stars {
-            display: flex;
-            gap: 1px;
-        }
-
-        .gbp-stars svg {
-            width: 14px;
-            height: 14px;
-            fill: #FBBC05;
-        }
-
-        .gbp-review-count {
-            font-size: 0.78rem;
-            color: #1a73e8;
-            cursor: pointer;
-        }
-
-        .gbp-review-count:hover {
-            text-decoration: underline;
-        }
-
-        .gbp-reviews {
-            padding: 0;
-        }
-
-        .gbp-review-item {
-            padding: 18px 24px;
-            border-top: 1px solid #e8eaed;
-        }
-
-        .gbp-review-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
+        .gbp-reviews { padding: 0; }
+        .gbp-review-item { padding: 20px 24px; border-top: 1px solid #e8eaed; }
+        .gbp-review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
         .gbp-review-initial {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            flex-shrink: 0;
-            letter-spacing: 0.5px;
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; font-weight: 600; color: white;
+            flex-shrink: 0; letter-spacing: 0.5px;
         }
-
-        .gbp-review-initial.bg-purple {
-            background-color: #7B1FA2;
-        }
-
-        .gbp-review-initial.bg-teal {
-            background-color: #00897B;
-        }
-
-        .gbp-review-author-info {
-            flex: 1;
-        }
-
-        .gbp-review-author-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #202124;
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        .gbp-review-source {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.72rem;
-            color: #5f6368;
-            margin-top: 2px;
-        }
-
-        .gbp-review-source img {
-            width: 12px;
-            height: 12px;
-        }
-
-        .gbp-review-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .gbp-review-score {
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: #202124;
-        }
-
-        .gbp-review-stars {
-            display: flex;
-            gap: 1px;
-        }
-
-        .gbp-review-stars svg {
-            width: 13px;
-            height: 13px;
-            fill: #FBBC05;
-        }
-
-        .gbp-review-time {
-            font-size: 0.75rem;
-            color: #70757a;
-        }
-
-        .gbp-review-text {
-            font-size: 0.88rem;
-            color: #3c4043;
-            line-height: 1.55;
-            margin: 0;
-        }
+        .gbp-review-initial.bg-purple { background-color: #7B1FA2; }
+        .gbp-review-initial.bg-teal { background-color: #00897B; }
+        .gbp-review-author-info { flex: 1; }
+        .gbp-review-author-name { font-size: 0.9rem; font-weight: 600; color: #202124; margin: 0; line-height: 1.2; }
+        .gbp-review-source { display: flex; align-items: center; gap: 4px; font-size: 0.72rem; color: #5f6368; margin-top: 2px; }
+        .gbp-review-source img { width: 12px; height: 12px; }
+        .gbp-review-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+        .gbp-review-score { font-size: 0.82rem; font-weight: 600; color: #202124; }
+        .gbp-review-stars { display: flex; gap: 1px; }
+        .gbp-review-stars svg { width: 13px; height: 13px; fill: #FBBC05; }
+        .gbp-review-time { font-size: 0.75rem; color: #70757a; }
+        .gbp-review-text { font-size: 0.88rem; color: #3c4043; line-height: 1.55; margin: 0; }
 
         .gbp-trust-footer {
             padding: 14px 24px;
@@ -1498,337 +967,752 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            border-radius: 0 0 16px 16px;
+        }
+        .gbp-trust-icon {
+            width: 22px; height: 22px;
+            background-color: #16a34a;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .gbp-trust-icon svg { width: 13px; height: 13px; fill: white; }
+        .gbp-trust-text { font-size: 0.72rem; color: #15803d; line-height: 1.4; font-weight: 500; }
+
+        /* ============================================
+           CONTACT
+           ============================================ */
+        .contact-section { background: var(--bg); }
+
+        .contact-form {
+            background: var(--bg-elevated);
+            border-radius: var(--radius-lg);
+            padding: clamp(28px, 4vw, 48px);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            height: 100%;
+        }
+        .contact-form h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+        .contact-form-intro {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
         }
 
-        .gbp-trust-icon {
-            width: 22px;
-            height: 22px;
-            background-color: #16a34a;
+        .form-control {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            font-size: 0.98rem;
+            font-family: var(--font-body);
+            color: var(--text);
+            background-color: var(--cream-50);
+            transition: border-color var(--dur-fast) var(--ease-out),
+                        background-color var(--dur-fast) var(--ease-out),
+                        box-shadow var(--dur-fast) var(--ease-out);
+        }
+        .form-control::placeholder { color: var(--ink-300); }
+        .form-control:focus {
+            border-color: var(--accent);
+            background-color: var(--bg-elevated);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+            outline: none;
+        }
+        .form-control:hover:not(:focus) { border-color: var(--border-strong); }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+        }
+        .form-text { color: var(--text-muted); font-size: 0.8rem; margin-top: 6px; }
+
+        .form-status {
+            margin-top: 18px;
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            display: none;
+        }
+        .form-status.is-visible { display: block; animation: fadeUp .4s var(--ease-out); }
+        .form-status.is-success {
+            background: rgba(143, 166, 142, 0.14);
+            border: 1px solid rgba(143, 166, 142, 0.4);
+            color: #4a6b48;
+        }
+        .form-status.is-error {
+            background: rgba(201, 131, 122, 0.12);
+            border: 1px solid rgba(201, 131, 122, 0.4);
+            color: #8a3d34;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-info {
+            background: var(--ink-900);
+            color: var(--cream-100);
+            border-radius: var(--radius-lg);
+            padding: clamp(28px, 4vw, 48px);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .contact-info h4 {
+            color: var(--cream-50);
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .contact-info-intro {
+            color: var(--ink-300);
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 22px;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            transition: background-color var(--dur-fast) var(--ease-out);
+            position: relative;
+        }
+        .contact-item:hover { background-color: rgba(255, 255, 255, 0.05); }
+
+        .contact-item .ci-icon {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(184, 168, 217, 0.15);
+            color: var(--accent-soft);
+            border-radius: var(--radius-sm);
+            font-size: 1.05rem;
+            flex-shrink: 0;
+            transition: transform var(--dur-base) var(--ease-out),
+                        background-color var(--dur-base) var(--ease-out);
+        }
+        .contact-item:hover .ci-icon {
+            background-color: var(--accent);
+            color: var(--cream-50);
+            transform: scale(1.05);
+        }
+
+        .contact-item h5 {
+            color: var(--cream-50);
+            margin-bottom: 4px;
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .contact-item p {
+            color: var(--cream-200);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .contact-item a { color: var(--cream-200); }
+        .contact-item a:hover { color: var(--accent-soft); }
+
+        .contact-map-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 8px 14px;
+            background: rgba(184, 168, 217, 0.12);
+            border: 1px solid rgba(184, 168, 217, 0.25);
+            color: var(--accent-soft) !important;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border-radius: 999px;
+            transition: all var(--dur-fast) var(--ease-out);
+        }
+        .contact-map-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--cream-50) !important;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background-color: var(--ink-900);
+            color: var(--cream-200);
+            padding: 60px 0 36px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--cream-50);
+            margin-bottom: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-brand img { height: 36px; width: auto; }
+        .footer-tag {
+            color: var(--ink-300);
+            font-size: 0.9rem;
+            max-width: 460px;
+            margin: 0 auto 28px;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.06);
+            color: var(--cream-100);
+            border-radius: 50%;
+            font-size: 0.95rem;
+            transition: all var(--dur-base) var(--ease-out);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .social-icon:hover {
+            background-color: var(--accent);
+            color: var(--cream-50);
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .footer-copy {
+            font-size: 0.82rem;
+            color: var(--ink-300);
+            margin: 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============================================
+           FLOATING INSTAGRAM
+           ============================================ */
+        .floating-instagram-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 8px 24px rgba(188, 24, 136, 0.32);
+            transition: transform var(--dur-base) var(--ease-out),
+                        box-shadow var(--dur-base) var(--ease-out);
+            z-index: 1000;
+            cursor: pointer;
         }
-
-        .gbp-trust-icon svg {
-            width: 13px;
-            height: 13px;
-            fill: white;
+        .floating-instagram-btn::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: inherit;
+            opacity: 0.4;
+            filter: blur(12px);
+            z-index: -1;
+            animation: pulse 2.6s var(--ease-in-out) infinite;
         }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(1.1); }
+        }
+        .floating-instagram-btn:hover {
+            transform: scale(1.08) translateY(-4px);
+            box-shadow: 0 12px 32px rgba(188, 24, 136, 0.5);
+            color: white;
+        }
+        .floating-instagram-btn i { transition: transform var(--dur-base) var(--ease-out); }
+        .floating-instagram-btn:hover i { transform: rotate(12deg); }
 
-        .gbp-trust-text {
-            font-size: 0.72rem;
-            color: #15803d;
-            line-height: 1.4;
+        .instagram-tooltip {
+            position: absolute;
+            right: 68px;
+            background-color: var(--ink-900);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 999px;
+            white-space: nowrap;
+            font-size: 0.8rem;
             font-weight: 500;
+            font-family: var(--font-body);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(6px);
+            transition: opacity var(--dur-fast) var(--ease-out),
+                        transform var(--dur-fast) var(--ease-out),
+                        visibility var(--dur-fast);
+            pointer-events: none;
+        }
+        .floating-instagram-btn:hover .instagram-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
         }
 
-        @media (max-width: 575px) {
-            .gbp-card {
-                max-width: 100%;
-                margin: 30px 0 0;
-            }
+        /* ============================================
+           SCROLL PROGRESS + LOADING
+           ============================================ */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-deep), var(--accent), var(--accent-soft));
+            z-index: 9999;
+            will-change: width;
+        }
 
-            .gbp-card-header {
-                padding: 20px 16px 16px;
-                gap: 14px;
-            }
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity .55s var(--ease-out), visibility .55s;
+        }
+        .loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader {
+            width: 44px;
+            height: 44px;
+            border: 2px solid rgba(107, 91, 149, 0.18);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-            .gbp-avatar {
-                width: 58px;
-                height: 58px;
-            }
+        /* ============================================
+           REVEAL ANIMATION
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity var(--dur-slow) var(--ease-out),
+                        transform var(--dur-slow) var(--ease-out);
+            transition-delay: var(--reveal-delay, 0ms);
+            will-change: opacity, transform;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .gbp-info h3 {
-                font-size: 1rem;
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 991.98px) {
+            .hero { min-height: auto; padding: calc(var(--nav-h) + 60px) 0 80px; text-align: center; }
+            .hero-content { text-align: center; margin: 0 auto; max-width: 640px; }
+            .hero-content .lead { margin-left: auto; margin-right: auto; }
+            .hero-cta-row { justify-content: center; }
+            .hero-meta { justify-content: center; margin-left: auto; margin-right: auto; }
+            .hero-portrait-wrap { margin: 56px auto 0; max-width: 380px; }
+            .hero-scroll-cue { display: none; }
+            .navbar-collapse {
+                margin-top: 14px;
+                background: var(--bg-elevated);
+                border-radius: var(--radius-md);
+                padding: 14px;
+                box-shadow: var(--shadow-md);
+                border: 1px solid var(--border);
             }
+            .nav-link { text-align: center; padding: 12px 16px !important; }
+            .about-portrait-wrap { margin-bottom: 50px; }
+        }
 
-            .gbp-review-item {
-                padding: 14px 16px;
-            }
+        @media (max-width: 767.98px) {
+            html { scroll-padding-top: 76px; }
+            .section { padding: 64px 0; }
+            .section-title { margin-bottom: 44px; }
+            .hero-badge { left: 50%; transform: translateX(-50%); bottom: -16px; }
+            .testimonial-card { padding: 32px 24px 28px; }
+            .testimonial-quote { font-size: 1rem; }
+        }
 
-            .gbp-trust-footer {
-                padding: 12px 16px;
+        @media (max-width: 575.98px) {
+            .container { padding-left: 20px; padding-right: 20px; }
+            .form-control { font-size: 16px; /* prevent iOS zoom */ }
+            .btn-primary-custom { width: 100%; justify-content: center; min-height: 48px; }
+            .hero-portrait-wrap { max-width: 300px; }
+            .hero-meta { gap: 16px 24px; }
+            .navbar { padding: 10px 0; }
+            .navbar-logo { height: 32px; }
+            .navbar-brand { font-size: 1rem; }
+            .service-card { padding: 30px 24px; }
+            .gbp-card { margin: 40px 0 0; }
+        }
+
+        @media (max-height: 640px) and (orientation: landscape) {
+            .hero { min-height: auto; padding: calc(var(--nav-h) + 30px) 0 40px; }
+            .hero-portrait-wrap { max-width: 240px; }
+            .hero-scroll-cue { display: none; }
+        }
+
+        /* ============================================
+           REDUCED MOTION
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
             }
+            .reveal { opacity: 1; transform: none; }
+            .hero-portrait { transform: none !important; }
+            .hero-portrait-frame { transform: none !important; }
+        }
+
+        /* ============================================
+           PRINT
+           ============================================ */
+        @media print {
+            .navbar, .scroll-progress, .floating-instagram-btn,
+            .loading-screen, .hero-scroll-cue { display: none !important; }
+            body::before { display: none; }
+            .hero { min-height: auto; padding: 20px 0; }
+            .section { padding: 30px 0; page-break-inside: avoid; }
         }
     </style>
 </head>
 
 <body>
     <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader"></div>
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
+        <div class="loader" role="status" aria-label="Yükleniyor"></div>
     </div>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <img src="logo.png" alt="Psikolog Asya Özcan Logo" class="navbar-logo">
-                Psikolog Asya Özcan
+                <img src="logo.png" alt="" class="navbar-logo" width="38" height="38">
+                <span>Psikolog Asya Özcan</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fas fa-bars" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Menüyü aç/kapat">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Ana Sayfa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">Hakkımda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Hizmetler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Referanslar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">İletişim</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Hakkımda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Hizmetler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Referanslar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">İletişim</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-content fade-in">
-                        <h1>Psikolog Asya Özcan</h1>
-                        <p class="subtitle">Psikolog & Danışman</p>
-                        <p class="lead mb-4">İzmit merkezli kliniğimizde ve online platformda, çocuk, genç ve yetişkin
-                            ruh sağlığı alanında uzmanlaşmış hizmet sunuyorum. Özel eğitim, gelişimsel bozukluklar,
-                            depresyon ve anksiyete konularında size destek oluyorum.</p>
-                        <a href="#contact" class="btn btn-primary-custom">İletişime Geç</a>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <div class="hero-content reveal">
+                        <span class="eyebrow">İzmit, Kocaeli · Online &amp; Yüz Yüze</span>
+                        <h1>
+                            Ruhunuza güvenli bir
+                            <span class="display-serif-italic">alan</span> açıyorum.
+                        </h1>
+                        <p class="lead">
+                            İzmit merkezli kliniğimizde ve online platformda; çocuk, genç ve yetişkin ruh sağlığı
+                            alanında bireyselleştirilmiş terapi süreçleri sunuyorum. Özel eğitim, gelişimsel
+                            bozukluklar, depresyon ve anksiyete konularında yanınızdayım.
+                        </p>
+                        <div class="hero-cta-row">
+                            <a href="#contact" class="btn-primary-custom">
+                                İletişime Geç
+                                <span class="btn-arrow" aria-hidden="true">
+                                    <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </a>
+                            <a href="#services" class="btn-ghost">
+                                Hizmetleri Gör
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="hero-meta">
+                            <span class="hero-meta-item"><i class="fas fa-check-circle" aria-hidden="true"></i> MMPI Sertifikalı</span>
+                            <span class="hero-meta-item"><i class="fas fa-globe" aria-hidden="true"></i> TR · EN · DE</span>
+                            <span class="hero-meta-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Tam Gizlilik</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="text-center">
-                        <div
-                            style="width: 400px; height: 400px; background: rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); padding: 20px;">
-                            <img src="asyaozcanpp.jpeg" alt="Psikolog Asya Özcan"
-                                style="width: 360px; height: 360px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 8px solid rgba(255,255,255,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <div class="col-lg-5">
+                    <div class="hero-portrait-wrap reveal" style="--reveal-delay: 180ms;">
+                        <div class="hero-portrait-frame" aria-hidden="true"></div>
+                        <div class="hero-portrait">
+                            <img src="asyaozcanpp.jpeg" alt="Psikolog Asya Özcan portresi" loading="eager" decoding="async">
+                        </div>
+                        <div class="hero-badge">
+                            <span class="dot" aria-hidden="true"></span>
+                            <div>
+                                <div class="hero-badge-text">Randevu açık</div>
+                                <div class="hero-badge-sub">Pzt – Cmt · 09:00 – 18:00</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="#about" class="hero-scroll-cue" aria-label="Aşağı kaydır">
+            <span>aşağı kaydır</span>
+        </a>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="section about-section">
         <div class="container">
-            <div class="section-title fade-in">
-                <h2>Hakkımda</h2>
-                <p>Profesyonel deneyimim ve yaklaşımım hakkında bilgi edinin</p>
+            <div class="section-title reveal">
+                <span class="eyebrow">Hakkımda</span>
+                <h2>Tanışmak için <span class="display-serif-italic">birkaç kelime</span></h2>
+                <p>Profesyonel deneyimim, yaklaşımım ve sizinle paylaşmak istediğim yolculuk.</p>
+                <div class="section-divider" aria-hidden="true"></div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                    <div class="fade-in">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-4 text-center">
+                    <div class="about-portrait-wrap reveal">
+                        <div class="about-portrait-deco" aria-hidden="true"></div>
+                        <div class="about-portrait-deco-2" aria-hidden="true"></div>
                         <img src="asyaozcanpp.jpeg" alt="Psikolog Asya Özcan" class="profile-img"
-                            style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 8px solid var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                            loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div class="about-text fade-in">
-                        <h3 class="mb-4" style="color: var(--text-dark); font-weight: 600;">Merhaba, Ben Asya Özcan</h3>
-                        <p class="mb-4">
+                    <div class="about-text reveal" style="--reveal-delay: 120ms;">
+                        <h3>Merhaba, ben <span class="display-serif-italic">Asya Özcan</span></h3>
+                        <p>
                             Fenerbahçe Üniversitesi Psikoloji Bölümü'nden "Onur" derecesi ile mezun oldum. İzmit
                             merkezli kliniğimizde ve online platformda çocuk, genç ve yetişkin ruh sağlığı alanında
                             hizmet veriyorum. Sertifikalı MMPI ve Objektif Çocuk Testleri Uygulayıcısı olarak, özel
                             eğitim ve gelişimsel bozukluklar konusunda uzmanlaştım.
                         </p>
-                        <p class="mb-4">
-                            Özel eğitim alanında deneyimli olarak, otizm spektrum bozukluğu, gelişimsel gecikmeler,
-                            öğrenme güçlükleri olan çocuklarla çalışıyorum. Ayrıca çocuklarda okul fobisi, davranış
-                            sorunları, gençlerde sosyal anksiyete ve kimlik arayışı, yetişkinlerde depresyon konularında
-                            bireyselleştirilmiş terapi planları uyguluyorum. İngilizce ve Almanca dillerinde de hizmet
-                            verebiliyorum.
+                        <p>
+                            Özel eğitim alanında deneyimli olarak otizm spektrum bozukluğu, gelişimsel gecikmeler ve
+                            öğrenme güçlükleri olan çocuklarla çalışıyorum. Çocuklarda okul fobisi ve davranış
+                            sorunları, gençlerde sosyal anksiyete ve kimlik arayışı, yetişkinlerde depresyon
+                            konularında bireyselleştirilmiş terapi planları uyguluyorum. İngilizce ve Almanca
+                            dillerinde de hizmet verebiliyorum.
                         </p>
-                        <p class="mb-4">
-                            Yetişkin ruh sağlığı alanında, depresyon, anksiyete bozuklukları, yaşam geçişi zorlukları,
-                            iş stresi, ilişki sorunları ve kişisel gelişim konularında destek sağlıyorum. Hem
-                            kliniğimizde yüz yüze hem de online platformda, yetişkinlerin ruhsal sağlığını güçlendirmek
-                            ve yaşam kalitelerini artırmak için bireyselleştirilmiş yaklaşımlar geliştiriyorum. MMPI
-                            testleri ile kapsamlı kişilik değerlendirmeleri yaparak, her bireye özgü terapi süreçleri
-                            tasarlıyorum.
+                        <p>
+                            Yetişkin ruh sağlığında depresyon, anksiyete bozuklukları, yaşam geçişi zorlukları, iş
+                            stresi, ilişki sorunları ve kişisel gelişim konularında destek sağlıyorum. Hem kliniğimizde
+                            yüz yüze hem de online platformda, danışanların ruhsal sağlığını güçlendirmek ve yaşam
+                            kalitelerini artırmak için bireyselleştirilmiş yaklaşımlar geliştiriyorum. MMPI testleri ile
+                            kapsamlı kişilik değerlendirmeleri yaparak, her bireye özgü terapi süreçleri tasarlıyorum.
                         </p>
-                        <p class="mb-4">
-                            Multidisipliner ekiplerle iş birliği içinde çalışarak, çocukların gelişimini bütüncül bir
+                        <p>
+                            Multidisipliner ekiplerle iş birliği içinde çalışarak çocukların gelişimini bütüncül bir
                             yaklaşımla destekliyorum. MMPI ve Objektif Çocuk Testleri ile detaylı değerlendirmeler
                             yaparak, aile katılımını güçlendirerek daha etkili ve kalıcı sonuçlar elde etmeyi
                             hedefliyorum.
                         </p>
+                        <div class="about-credentials">
+                            <span class="credential-pill"><i class="fas fa-graduation-cap"></i> Fenerbahçe Üniversitesi · Onur</span>
+                            <span class="credential-pill"><i class="fas fa-certificate"></i> MMPI Sertifikalı</span>
+                            <span class="credential-pill"><i class="fas fa-child"></i> Objektif Çocuk Testleri</span>
+                            <span class="credential-pill"><i class="fas fa-language"></i> TR · EN · DE</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
+    <!-- Services -->
+    <section id="services" class="section services-section">
         <div class="container">
-            <div class="section-title fade-in">
-                <h2>Hizmetlerim</h2>
-                <p>Size sunduğum profesyonel psikolojik destek hizmetleri</p>
+            <div class="section-title reveal">
+                <span class="eyebrow">Hizmetler</span>
+                <h2>Size sunduğum <span class="display-serif-italic">profesyonel</span> destek</h2>
+                <p>Her birey için özelleştirilmiş, kanıta dayalı yöntemlerle desteklenmiş terapi süreçleri.</p>
+                <div class="section-divider" aria-hidden="true"></div>
             </div>
-            <!-- İlk satır: 3 hizmet ortalanmış -->
-            <div class="row justify-content-center">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
+
+            <div class="row justify-content-center g-4">
+                <div class="col-lg-4 col-md-6">
+                    <article class="service-card reveal">
+                        <span class="service-num">01</span>
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-user"></i></div>
                         <h4>Bireysel Terapi</h4>
-                        <p>Kişisel zorluklar, anksiyete, depresyon ve diğer ruhsal sağlık sorunları için birebir destek
-                            sağlıyorum.</p>
-                    </div>
+                        <p>Kişisel zorluklar, anksiyete, depresyon ve diğer ruhsal sağlık sorunları için birebir destek sağlıyorum.</p>
+                    </article>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-puzzle-piece"></i>
-                        </div>
-                        <h4>Özel Eğitim & Otizm</h4>
-                        <p>Otizm spektrum bozukluğu, gelişimsel gecikmeler ve öğrenme güçlüğü olan çocuklar için
-                            bireyselleştirilmiş eğitim ve terapi programları.</p>
-                    </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="service-card reveal" style="--reveal-delay: 80ms;">
+                        <span class="service-num">02</span>
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-puzzle-piece"></i></div>
+                        <h4>Özel Eğitim &amp; Otizm</h4>
+                        <p>Otizm spektrum bozukluğu, gelişimsel gecikmeler ve öğrenme güçlüğü olan çocuklar için bireyselleştirilmiş eğitim ve terapi programları.</p>
+                    </article>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-heart-broken"></i>
-                        </div>
-                        <h4>Depresyon & Anksiyete</h4>
-                        <p>Depresyon, yaygın anksiyete bozukluğu, sosyal fobi ve panik atak gibi duygudurum bozuklukları
-                            için terapi desteği.</p>
-                    </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="service-card reveal" style="--reveal-delay: 160ms;">
+                        <span class="service-num">03</span>
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-heart"></i></div>
+                        <h4>Depresyon &amp; Anksiyete</h4>
+                        <p>Depresyon, yaygın anksiyete bozukluğu, sosyal fobi ve panik atak gibi duygudurum bozuklukları için terapi desteği.</p>
+                    </article>
                 </div>
-            </div>
-
-            <!-- İkinci satır: 3 hizmet ortalanmış -->
-            <div class="row justify-content-center">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-child"></i>
-                        </div>
-                        <h4>Çocuk & Genç Psikolojisi</h4>
-                        <p>Okul fobisi, davranış sorunları, ergenlik dönemi zorlukları ve kimlik arayışı problemleri
-                            için yaş grubuna uygun terapi yaklaşımları.</p>
-                    </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="service-card reveal">
+                        <span class="service-num">04</span>
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-child"></i></div>
+                        <h4>Çocuk &amp; Genç Psikolojisi</h4>
+                        <p>Okul fobisi, davranış sorunları, ergenlik dönemi zorlukları ve kimlik arayışı problemleri için yaş grubuna uygun terapi yaklaşımları.</p>
+                    </article>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop"></i>
-                        </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="service-card reveal" style="--reveal-delay: 80ms;">
+                        <span class="service-num">05</span>
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-laptop"></i></div>
                         <h4>Online Seanslar</h4>
-                        <p>İzmit dışından da erişebileceğiniz güvenli online terapi seansları. Esnek saatler ve gizlilik
-                            garantisi ile uzaktan psikolojik destek.</p>
-                    </div>
+                        <p>İzmit dışından da erişebileceğiniz güvenli online terapi seansları. Esnek saatler ve gizlilik garantisi ile uzaktan psikolojik destek.</p>
+                    </article>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <h4>MMPI & Objektif Testler</h4>
-                        <p>Sertifikalı MMPI ve diğer objektif psikolojik testlerle profesyonel değerlendirme ve tanı
-                            destek süreçleri sunuyorum.</p>
-                    </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="service-card reveal" style="--reveal-delay: 160ms;">
+                        <span class="service-num">06</span>
+                        <div class="service-icon" aria-hidden="true"><i class="fas fa-clipboard-check"></i></div>
+                        <h4>MMPI &amp; Objektif Testler</h4>
+                        <p>Sertifikalı MMPI ve diğer objektif psikolojik testlerle profesyonel değerlendirme ve tanı destek süreçleri sunuyorum.</p>
+                    </article>
                 </div>
             </div>
 
-            <!-- Üçüncü satır: Geniş hizmet kartı ortalanmış -->
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-12 mb-4">
-                    <div class="service-card fade-in" style="text-align: left; padding: 30px;">
-                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                            <div class="service-icon" style="margin-bottom: 0; margin-right: 20px; font-size: 2.5rem;">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
+            <div class="row justify-content-center g-4 mt-2">
+                <div class="col-lg-10">
+                    <article class="service-card service-card-wide reveal">
+                        <span class="service-num">07</span>
+                        <div class="service-wide-head">
+                            <div class="service-icon" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
-                                <h4 style="margin-bottom: 5px;">Hizmet Lokasyonları</h4>
-                                <p style="margin: 0; color: var(--accent-color); font-weight: 500;">İzmit Merkez Klinik
-                                    & Online Platform</p>
+                                <h4>Hizmet Lokasyonları</h4>
+                                <p class="service-sub">İzmit Merkez Klinik &amp; Online Platform</p>
                             </div>
                         </div>
-                        <p style="margin: 0;">İzmit merkezindeki kliniğimizde yüz yüze görüşmeler ve güvenli online
-                            platformumuzda uzaktan seanslar sunuyorum. Kocaeli ve çevre illerdeki danışanlarım için
-                            esnek randevu seçenekleri mevcuttur. İngilizce ve Almanca dillerinde de hizmet
-                            verebiliyorum.</p>
-                        <div style="margin-top: 15px; text-align: center;">
-                            <div class="ratio ratio-16x9 maps-image"
-                                style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden;">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.0660668980313!2d29.932822299999998!3d40.76229839999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb457e887328c7%3A0xd43ccb3d60c9347f!2zxLB6bWl0IEtlbnQgTWV5ZGFuxLE!5e1!3m2!1str!2str!4v1770936844413!5m2!1str!2str"
-                                    width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </div>
+                        <p class="service-wide-body">
+                            İzmit merkezindeki kliniğimizde yüz yüze görüşmeler ve güvenli online platformumuzda
+                            uzaktan seanslar sunuyorum. Kocaeli ve çevre illerdeki danışanlar için esnek randevu
+                            seçenekleri mevcuttur. İngilizce ve Almanca dillerinde de hizmet verebiliyorum.
+                        </p>
+                        <div class="map-frame">
+                            <iframe title="İzmit Kent Meydanı Haritası"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.0660668980313!2d29.932822299999998!3d40.76229839999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb457e887328c7%3A0xd43ccb3d60c9347f!2zxLB6bWl0IEtlbnQgTWV5ZGFuxLE!5e1!3m2!1str!2str!4v1770936844413!5m2!1str!2str"
+                                allowfullscreen loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials -->
     <section id="testimonials" class="section testimonials-section">
         <div class="container">
-            <div class="section-title fade-in">
-                <h2>Danışan Görüşleri</h2>
-                <p>Hizmet aldığım danışanlarımın deneyimleri</p>
+            <div class="section-title reveal">
+                <span class="eyebrow">Referanslar</span>
+                <h2>Danışanlarımın <span class="display-serif-italic">deneyimi</span></h2>
+                <p>Birlikte yürüdüğümüz süreçlerden samimi paylaşımlar.</p>
+                <div class="section-divider" aria-hidden="true"></div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="testimonial-card fade-in">
-                        <div class="testimonial-quote">
-                            "Depresyonla mücadelede Asya Hanım'dan aldığım destek hayatımı değiştirdi. Terapi yaklaşımı
-                            çok etkili oldu. Artık hayata daha pozitif bakıyorum."
-                        </div>
-                        <div class="testimonial-author">- Mehmet K.</div>
-                    </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <article class="testimonial-card reveal">
+                        <p class="testimonial-quote">
+                            Depresyonla mücadelede Asya Hanım'dan aldığım destek hayatımı değiştirdi. Terapi yaklaşımı
+                            çok etkili oldu. Artık hayata daha pozitif bakıyorum.
+                        </p>
+                        <div class="testimonial-author">Mehmet K.</div>
+                    </article>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="testimonial-card fade-in">
-                        <div class="testimonial-quote">
-                            "Otizm spektrum bozukluğu olan kızım için hazırlanan bireyselleştirilmiş program ve aile
-                            katılımı sayesinde sosyal becerilerinde büyük gelişim gözledik. Çok memnunuz."
-                        </div>
-                        <div class="testimonial-author">- Fatma K. (Anne)</div>
-                    </div>
+                <div class="col-lg-4">
+                    <article class="testimonial-card reveal" style="--reveal-delay: 100ms;">
+                        <p class="testimonial-quote">
+                            Otizm spektrum bozukluğu olan kızım için hazırlanan bireyselleştirilmiş program ve aile
+                            katılımı sayesinde sosyal becerilerinde büyük gelişim gözledik. Çok memnunuz.
+                        </p>
+                        <div class="testimonial-author">Fatma K. — Anne</div>
+                    </article>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="testimonial-card fade-in">
-                        <div class="testimonial-quote">
-                            "Online seanslar sayesinde İstanbul'dan İzmit'e gitmeden terapi alabildim. Video görüşmeler
-                            çok profesyonel ve gizlilik konusunda endişem olmadı. Çok pratik!"
-                        </div>
-                        <div class="testimonial-author">- Ahmet B. (İstanbul)</div>
-                    </div>
+                <div class="col-lg-4">
+                    <article class="testimonial-card reveal" style="--reveal-delay: 200ms;">
+                        <p class="testimonial-quote">
+                            Online seanslar sayesinde İstanbul'dan İzmit'e gitmeden terapi alabildim. Video görüşmeler
+                            çok profesyonel ve gizlilik konusunda endişem olmadı. Çok pratik!
+                        </p>
+                        <div class="testimonial-author">Ahmet B. — İstanbul</div>
+                    </article>
                 </div>
             </div>
 
             <!-- Google Business Profile Card -->
-            <div class="row justify-content-center mt-4">
-                <div class="col-lg-6 col-md-8">
-                    <div class="gbp-card fade-in">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="gbp-card reveal">
                         <div class="gbp-card-header">
-                            <img src="asyaozcanpp.jpeg" alt="Psikolog Asya Özcan" class="gbp-avatar">
+                            <img src="asyaozcanpp.jpeg" alt="Psikolog Asya Özcan" class="gbp-avatar" loading="lazy" decoding="async">
                             <div class="gbp-info">
                                 <h3>
                                     Psikolog Asya Özcan
                                     <span class="gbp-verified" title="Doğrulanmış İşletme">
-                                        <svg viewBox="0 0 24 24">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true">
                                             <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
                                         </svg>
                                     </span>
@@ -1836,49 +1720,29 @@
                                 <p class="gbp-subtitle">Psikolog · İzmit, Kocaeli</p>
                                 <div class="gbp-rating">
                                     <span class="gbp-rating-score">5.0</span>
-                                    <div class="gbp-stars">
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
+                                    <div class="gbp-stars" aria-label="5 yıldız">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                     </div>
                                     <span class="gbp-review-count">3 Google Yorumu</span>
                                 </div>
                             </div>
                         </div>
                         <div class="gbp-reviews">
-                            <!-- Review 1: Sena Kazan -->
                             <div class="gbp-review-item">
                                 <div class="gbp-review-header">
-                                    <div class="gbp-review-initial bg-purple">S</div>
+                                    <div class="gbp-review-initial bg-purple" aria-hidden="true">S</div>
                                     <div class="gbp-review-author-info">
                                         <p class="gbp-review-author-name">Sena Kazan</p>
                                         <div class="gbp-review-source">
-                                            <svg viewBox="0 0 48 48" width="12" height="12">
-                                                <path fill="#4285F4"
-                                                    d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
-                                                <path fill="#34A853"
-                                                    d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
-                                                <path fill="#FBBC05"
-                                                    d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
-                                                <path fill="#EA4335"
-                                                    d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                                            <svg viewBox="0 0 48 48" width="12" height="12" aria-hidden="true">
+                                                <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                                                <path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                                                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                                                <path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
                                             </svg>
                                             Google yorumları
                                         </div>
@@ -1886,49 +1750,28 @@
                                 </div>
                                 <div class="gbp-review-meta">
                                     <span class="gbp-review-score">5/5</span>
-                                    <div class="gbp-review-stars">
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
+                                    <div class="gbp-review-stars" aria-label="5 yıldız">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                     </div>
                                     <span class="gbp-review-time">· 3 ay önce</span>
                                 </div>
-                                <p class="gbp-review-text">o kadar tatlı ve samimi biri ki gerçekten seansta olduğumu
-                                    anlamadan çok doğal gelişiyor her şey 🫶</p>
+                                <p class="gbp-review-text">o kadar tatlı ve samimi biri ki gerçekten seansta olduğumu anlamadan çok doğal gelişiyor her şey 🫶</p>
                             </div>
-                            <!-- Review 2: Kübra Taşcı -->
                             <div class="gbp-review-item">
                                 <div class="gbp-review-header">
-                                    <div class="gbp-review-initial bg-teal">K</div>
+                                    <div class="gbp-review-initial bg-teal" aria-hidden="true">K</div>
                                     <div class="gbp-review-author-info">
                                         <p class="gbp-review-author-name">Kübra Taşcı</p>
                                         <div class="gbp-review-source">
-                                            <svg viewBox="0 0 48 48" width="12" height="12">
-                                                <path fill="#4285F4"
-                                                    d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
-                                                <path fill="#34A853"
-                                                    d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
-                                                <path fill="#FBBC05"
-                                                    d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
-                                                <path fill="#EA4335"
-                                                    d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                                            <svg viewBox="0 0 48 48" width="12" height="12" aria-hidden="true">
+                                                <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                                                <path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                                                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                                                <path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
                                             </svg>
                                             Google yorumları
                                         </div>
@@ -1936,141 +1779,117 @@
                                 </div>
                                 <div class="gbp-review-meta">
                                     <span class="gbp-review-score">5/5</span>
-                                    <div class="gbp-review-stars">
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
-                                        <svg viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                        </svg>
+                                    <div class="gbp-review-stars" aria-label="5 yıldız">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                     </div>
                                     <span class="gbp-review-time">· 3 ay önce</span>
                                 </div>
-                                <p class="gbp-review-text">İşini severek yapan, insanlara gerçekten dokunan bir
-                                    psikolog. Enerjisi ve samimiyetiyle farkını hemen hissettiriyor.</p>
+                                <p class="gbp-review-text">İşini severek yapan, insanlara gerçekten dokunan bir psikolog. Enerjisi ve samimiyetiyle farkını hemen hissettiriyor.</p>
                             </div>
                         </div>
-                        <!-- Trust Footer -->
                         <div class="gbp-trust-footer">
-                            <div class="gbp-trust-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-                                </svg>
+                            <div class="gbp-trust-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
                             </div>
-                            <span class="gbp-trust-text">Bu yorumlar Google onaylıdır. İşletme hesabına danışanlar
-                                tarafından bırakılmıştır.</span>
+                            <span class="gbp-trust-text">Bu yorumlar Google onaylıdır. İşletme hesabına danışanlar tarafından bırakılmıştır.</span>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
+    <!-- Contact -->
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <div class="section-title fade-in">
-                <h2>İletişim</h2>
-                <p>Randevu almak ve daha fazla bilgi için benimle iletişime geçin</p>
+            <div class="section-title reveal">
+                <span class="eyebrow">İletişim</span>
+                <h2>İlk adımı <span class="display-serif-italic">birlikte</span> atalım</h2>
+                <p>Randevu almak veya daha fazla bilgi için mesajınızı bırakın; en kısa sürede dönüş yapacağım.</p>
+                <div class="section-divider" aria-hidden="true"></div>
             </div>
-            <div class="row">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="contact-form fade-in">
-                        <h4 class="mb-4" style="color: var(--text-dark);">Mesaj Gönderin</h4>
-                        <form id="contact-form">
-                            <div class="mb-3">
-                                <label for="user_name" class="form-label">Adınız Soyadınız</label>
-                                <input type="text" class="form-control" id="user_name" name="user_name" required>
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="contact-form reveal">
+                        <h4>Mesaj Gönderin</h4>
+                        <p class="contact-form-intro">Form üzerinden gönderdiğiniz mesajlar gizli tutulur ve yalnızca tarafımdan okunur.</p>
+                        <form id="contact-form" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="user_name" class="form-label">Adınız Soyadınız</label>
+                                    <input type="text" class="form-control" id="user_name" name="user_name"
+                                        autocomplete="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="user_email" class="form-label">E-posta Adresiniz</label>
+                                    <input type="email" class="form-control" id="user_email" name="user_email"
+                                        autocomplete="email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="user_phone" class="form-label">Telefon Numaranız</label>
+                                    <input type="tel" class="form-control" id="user_phone" name="user_phone"
+                                        autocomplete="tel" placeholder="0555 000 00 00"
+                                        pattern="[0-9\s\(\)\-\+]{10,15}">
+                                    <div class="form-text">İsteğe bağlı — sizi arayabilmemiz için</div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Mesajınız</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-primary-custom" id="send-btn">
+                                        <span id="btn-text">Mesaj Gönder</span>
+                                        <span id="btn-loading" hidden>
+                                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Gönderiliyor...
+                                        </span>
+                                        <span class="btn-arrow" aria-hidden="true">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                    </button>
+                                    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="user_email" class="form-label">E-posta Adresiniz</label>
-                                <input type="email" class="form-control" id="user_email" name="user_email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="user_phone" class="form-label">Telefon Numaranız</label>
-                                <input type="tel" class="form-control" id="user_phone" name="user_phone"
-                                    placeholder="0555 000 00 00" pattern="[0-9\s\(\)\-\+]{10,15}">
-                                <div class="form-text">İsteğe bağlı - Sizi arayabilmemiz için</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Mesajınız</label>
-                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary-custom" id="send-btn">
-                                <span id="btn-text">Mesaj Gönder</span>
-                                <span id="btn-loading" style="display: none;">
-                                    <i class="fas fa-spinner fa-spin"></i> Gönderiliyor...
-                                </span>
-                            </button>
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="contact-info fade-in">
-                        <h4 class="mb-4" style="color: var(--text-dark);">İletişim Bilgileri</h4>
+                <div class="col-lg-5">
+                    <div class="contact-info reveal" style="--reveal-delay: 120ms;">
+                        <h4>İletişim Bilgileri</h4>
+                        <p class="contact-info-intro">Direkt ulaşmak isterseniz aşağıdaki kanalları kullanabilirsiniz.</p>
                         <div class="contact-item">
-                            <i class="fab fa-instagram"></i>
+                            <span class="ci-icon" aria-hidden="true"><i class="fab fa-instagram"></i></span>
                             <div>
                                 <h5>Instagram</h5>
-                                <p><a href="https://www.instagram.com/psikologasyaozcan/" target="_blank"
-                                        rel="noopener noreferrer"
-                                        style="color: inherit; text-decoration: none; transition: color 0.3s ease;">@psikologasyaozcan</a>
-                                </p>
+                                <p><a href="https://www.instagram.com/psikologasyaozcan/" target="_blank" rel="noopener noreferrer">@psikologasyaozcan</a></p>
                             </div>
                         </div>
-                        <!--
                         <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h5>Telefon</h5>
-                                <p style="color: var(--text-light); font-style: italic;">Yakında eklenecek...</p>
-                            </div>
-                        </div>
-                        -->
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
+                            <span class="ci-icon" aria-hidden="true"><i class="fas fa-envelope"></i></span>
                             <div>
                                 <h5>E-posta</h5>
-                                <p><a href="mailto:psikologasyaozcan@gmail.com"
-                                        style="color: inherit; text-decoration: none;">psikologasyaozcan@gmail.com</a>
-                                </p>
+                                <p><a href="mailto:psikologasyaozcan@gmail.com">psikologasyaozcan@gmail.com</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="ci-icon" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
                             <div>
                                 <h5>Adres</h5>
                                 <p>İzmit, Kocaeli<br>Türkiye</p>
-                                <a href="https://www.google.com/maps?q=40.7622984,29.9328223" target="_blank"
-                                    rel="noopener noreferrer"
-                                    style="color: var(--accent-color); font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; margin-top: 8px; padding: 6px 12px; background-color: rgba(147, 112, 219, 0.1); border-radius: 8px; transition: all 0.3s ease;"
-                                    onmouseover="this.style.backgroundColor='var(--accent-color)'; this.style.color='var(--white)'"
-                                    onmouseout="this.style.backgroundColor='rgba(147, 112, 219, 0.1)'; this.style.color='var(--accent-color)'">
-                                    <i class="fas fa-location-arrow" style="margin-right: 8px;"></i> Haritada Göster
+                                <a class="contact-map-link" href="https://www.google.com/maps?q=40.7622984,29.9328223"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-location-arrow" aria-hidden="true"></i> Haritada Göster
                                 </a>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-clock"></i>
+                            <span class="ci-icon" aria-hidden="true"><i class="fas fa-clock"></i></span>
                             <div>
                                 <h5>Çalışma Saatleri</h5>
-                                <p>Pazartesi - Cumartesi<br>09:00 - 18:00</p>
+                                <p>Pazartesi – Cumartesi<br>09:00 – 18:00</p>
                             </div>
                         </div>
                     </div>
@@ -2081,262 +1900,236 @@
 
     <!-- Floating Instagram Button -->
     <a href="https://www.instagram.com/psikologasyaozcan/" target="_blank" rel="noopener noreferrer"
-        class="floating-instagram-btn" aria-label="Instagram DM'den Ulaş">
+        class="floating-instagram-btn" aria-label="Instagram DM ile ulaş">
         <span class="instagram-tooltip">Instagram DM'den Ulaş</span>
-        <i class="fab fa-instagram"></i>
+        <i class="fab fa-instagram" aria-hidden="true"></i>
     </a>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="" width="36" height="36">
+                <span>Psikolog Asya Özcan</span>
+            </div>
+            <p class="footer-tag">
+                İzmit merkezli psikolog. Çocuk, genç ve yetişkin ruh sağlığı alanında bireysel,
+                bütüncül ve güvenli bir alanda destek.
+            </p>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/asya-ozcan/" target="_blank" rel="noopener noreferrer"
-                    class="social-icon">
-                    <i class="fab fa-linkedin-in"></i>
+                    class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                 </a>
                 <a href="https://www.google.com/maps?q=40.7622984,29.9328223" target="_blank" rel="noopener noreferrer"
                     class="social-icon" aria-label="Konum">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                 </a>
                 <a href="https://www.instagram.com/psikologasyaozcan/" target="_blank" rel="noopener noreferrer"
-                    class="social-icon">
-                    <i class="fab fa-instagram"></i>
+                    class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
                 </a>
             </div>
-            <p>&copy; 2025 Psikolog Asya Özcan. Tüm hakları saklıdır.</p>
+            <p class="footer-copy">&copy; <span id="year">2026</span> Psikolog Asya Özcan. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 
-    <!-- Custom JavaScript -->
     <script>
-        // Loading Screen
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 500);
-        });
+        (function () {
+            'use strict';
 
-        // Scroll Progress Bar
-        window.addEventListener('scroll', function () {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = progress + '%';
-        });
+            const $ = (sel, ctx = document) => ctx.querySelector(sel);
+            const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    // Close mobile menu if open
-                    const navbarCollapse = document.querySelector('.navbar-collapse');
-                    if (navbarCollapse.classList.contains('show')) {
-                        navbarCollapse.classList.remove('show');
+            /* ------- Loading Screen ------- */
+            window.addEventListener('load', () => {
+                const screen = $('#loadingScreen');
+                if (!screen) return;
+                setTimeout(() => screen.classList.add('hidden'), 320);
+                setTimeout(() => screen.remove(), 1200);
+            });
+
+            /* ------- Year ------- */
+            const yearEl = $('#year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            /* ------- Smooth anchor scroll + close mobile menu ------- */
+            $$('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#' || href.length < 2) return;
+                    const target = document.querySelector(href);
+                    if (!target) return;
+                    e.preventDefault();
+                    const navCollapse = $('.navbar-collapse');
+                    if (navCollapse && navCollapse.classList.contains('show')) {
+                        navCollapse.classList.remove('show');
                     }
-
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Navbar background on scroll with active link
-        window.addEventListener('scroll', function () {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 2px 30px rgba(147, 112, 219, 0.1)';
-            } else {
-                navbar.style.backgroundColor = 'var(--white)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-            }
-
-            // Active section highlighting
-            const sections = document.querySelectorAll('.section, .hero');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.offsetHeight;
-                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.style.color = 'var(--text-dark)';
-                link.style.backgroundColor = 'transparent';
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.style.color = 'var(--accent-color)';
-                    link.style.backgroundColor = 'rgba(147, 112, 219, 0.1)';
-                }
-            });
-        });
-
-        // EmailJS Configuration
-        let emailConfig = null;
-
-        // Load EmailJS configuration
-        async function loadEmailConfig() {
-            try {
-                // Önce fetch ile deneyelim (sunucu üzerinde çalışırsa)
-                const response = await fetch('./dev.json');
-                if (response.ok) {
-                    emailConfig = await response.json();
-                    emailjs.init(emailConfig.emailjs.publicKey);
-                    console.log('📧 EmailJS initialized from dev.json');
-                    return;
-                }
-            } catch (error) {
-                console.log('📄 dev.json fetch failed, using embedded config:', error.message);
-            }
-
-            // Fallback: Embedded configuration (local development için)
-            try {
-                // dev.json dosyasından embedded config
-                emailConfig = {
-                    "emailjs": {
-                        "publicKey": "CxkWQOTmq_t1KK4Yt",
-                        "serviceId": "service_7ngk89o",
-                        "templateId": "template_uoxn32d"
-                    }
-                };
-
-                emailjs.init(emailConfig.emailjs.publicKey);
-                console.log('📧 EmailJS initialized with embedded config');
-            } catch (error) {
-                console.error('⚠️ EmailJS initialization failed completely:', error);
-                alert('⚠️ EmailJS yapılandırması başarısız. Lütfen sayfa yenileyip tekrar deneyin.');
-            }
-        }
-
-        // Initialize when page loads
-        loadEmailConfig();
-
-        /*
-        📧 EMAİLJS KURULUM TALİMATLARI:
-        
-        1. EmailJS hesabı oluşturun: https://www.emailjs.com/
-        2. Service oluşturun (Gmail, Outlook, vb.)
-        3. Template oluşturun - Şu parametreleri kullanın:
-           - user_name
-           - user_email
-           - user_phone
-           - message
-        
-        4. dev.json dosyası oluşturun:
-        {
-          "emailjs": {
-            "publicKey": "YOUR_PUBLIC_KEY",
-            "serviceId": "YOUR_SERVICE_ID", 
-            "templateId": "YOUR_TEMPLATE_ID"
-          }
-        }
-        
-        📧 ÖNERİLEN TEMPLATE İÇERİĞİ:
-        
-        <div style="font-family: system-ui, sans-serif, Arial; font-size: 12px">
-          <div>{{user_name}} tarafından bir mesaj alındı. Lütfen en kısa sürede yanıtlayın.</div>
-          <div style="margin-top: 20px; padding: 15px 0; border-width: 1px 0; border-style: dashed; border-color: lightgrey;">
-            <table role="presentation">
-              <tr>
-                <td style="vertical-align: top">
-                  <div style="padding: 6px 10px; margin: 0 10px; background-color: aliceblue; border-radius: 5px; font-size: 26px;" role="img">
-                    &#x1F464;
-                  </div>
-                </td>
-                <td style="vertical-align: top">
-                  <div style="color: #2c3e50; font-size: 16px">
-                    <strong>{{user_name}}</strong>
-                  </div>
-                  <div style="color: #cccccc; font-size: 13px">{{user_email}}</div>
-                  <div style="color: #7B68EE; font-size: 13px; margin-top: 2px;">📞 {{user_phone}}</div>
-                  <p style="font-size: 16px; margin-top: 8px;">{{message}}</p>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div style="margin-top: 20px; padding: 10px; background-color: #f8f9ff; border-radius: 5px; font-size: 11px; color: #666;">
-            Bu mesaj Psikolog Asya Özcan web sitesinin iletişim formundan gönderilmiştir.<br>
-            Yanıtlamak için: {{user_email}}
-          </div>
-        </div>
-        
-        SUBJECT: Yeni Mesaj: {{user_name}} - Psikolog Asya Özcan
-        */
-
-        // Contact form submission with EmailJS
-        document.getElementById('contact-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Check if config is loaded
-            if (!emailConfig) {
-                alert('⚠️ EmailJS yapılandırması yüklenmedi. Lütfen sayfayı yenileyin.');
-                return;
-            }
-
-            // Button states
-            const sendBtn = document.getElementById('send-btn');
-            const btnText = document.getElementById('btn-text');
-            const btnLoading = document.getElementById('btn-loading');
-
-            // Show loading state
-            btnText.style.display = 'none';
-            btnLoading.style.display = 'inline';
-            sendBtn.disabled = true;
-
-            // EmailJS send with dynamic config
-            emailjs.sendForm(emailConfig.emailjs.serviceId, emailConfig.emailjs.templateId, this)
-                .then(function (response) {
-                    console.log('SUCCESS!', response.status, response.text);
-
-                    // Success message
-                    alert('✅ Mesajınız başarıyla gönderildi! En kısa sürede size geri dönüş yapacağım.');
-
-                    // Reset form
-                    document.getElementById('contact-form').reset();
-
-                }, function (error) {
-                    console.log('FAILED...', error);
-                    alert('❌ Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin veya doğrudan mail adresime yazın: psikologasyaozcan@gmail.com');
-                })
-                .finally(function () {
-                    // Reset button state
-                    btnText.style.display = 'inline';
-                    btnLoading.style.display = 'none';
-                    sendBtn.disabled = false;
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
-        });
+            });
+
+            /* ------- Reveal on scroll (IntersectionObserver) ------- */
+            const reveals = $$('.reveal');
+            if ('IntersectionObserver' in window && reveals.length) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                reveals.forEach(el => io.observe(el));
+            } else {
+                reveals.forEach(el => el.classList.add('is-visible'));
+            }
+
+            /* ------- Scroll-driven UI: progress + navbar + active link (rAF throttled) ------- */
+            const navbar = $('#mainNav');
+            const progress = $('#scrollProgress');
+            const sections = $$('section[id]');
+            const navLinks = $$('.nav-link');
+            let ticking = false;
+
+            function onScroll() {
+                const scrollTop = window.scrollY || window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+                // Progress
+                if (progress) {
+                    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                    progress.style.width = pct + '%';
+                }
+
+                // Navbar
+                if (navbar) navbar.classList.toggle('is-scrolled', scrollTop > 24);
+
+                // Active link
+                let currentId = '';
+                const probe = scrollTop + 140;
+                for (const sec of sections) {
+                    if (probe >= sec.offsetTop && probe < sec.offsetTop + sec.offsetHeight) {
+                        currentId = sec.id;
+                        break;
+                    }
+                }
+                navLinks.forEach(link => {
+                    link.classList.toggle('is-active', link.getAttribute('href') === '#' + currentId);
+                });
+
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(onScroll);
+                    ticking = true;
+                }
+            }, { passive: true });
+            onScroll();
+
+            /* ------- EmailJS ------- */
+            let emailConfig = null;
+            let emailReady = false;
+
+            async function loadEmailConfig() {
+                // Try external dev.json first
+                try {
+                    const response = await fetch('./dev.json', { cache: 'no-store' });
+                    if (response.ok) {
+                        emailConfig = await response.json();
+                    }
+                } catch (_) { /* fall through */ }
+
+                // Fallback: embedded config
+                if (!emailConfig) {
+                    emailConfig = {
+                        emailjs: {
+                            publicKey: 'CxkWQOTmq_t1KK4Yt',
+                            serviceId: 'service_7ngk89o',
+                            templateId: 'template_uoxn32d'
+                        }
+                    };
+                }
+
+                if (window.emailjs && emailConfig?.emailjs?.publicKey) {
+                    try {
+                        window.emailjs.init(emailConfig.emailjs.publicKey);
+                        emailReady = true;
+                    } catch (err) {
+                        console.error('EmailJS init failed:', err);
+                    }
+                }
+            }
+
+            // Wait for emailjs script (deferred) to be available
+            function ensureEmailJs() {
+                if (window.emailjs) return loadEmailConfig();
+                return new Promise(resolve => {
+                    const check = () => window.emailjs ? loadEmailConfig().then(resolve) : setTimeout(check, 60);
+                    check();
+                });
+            }
+            ensureEmailJs();
+
+            /* ------- Contact form ------- */
+            const form = $('#contact-form');
+            const status = $('#formStatus');
+            const sendBtn = $('#send-btn');
+            const btnText = $('#btn-text');
+            const btnLoading = $('#btn-loading');
+
+            function showStatus(kind, msg) {
+                if (!status) return;
+                status.className = 'form-status is-visible is-' + kind;
+                status.textContent = msg;
+            }
+
+            if (form) {
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
+
+                    if (!emailReady || !emailConfig) {
+                        showStatus('error', 'E-posta servisi henüz hazır değil. Lütfen birkaç saniye sonra tekrar deneyin.');
+                        return;
+                    }
+
+                    btnText.hidden = true;
+                    btnLoading.hidden = false;
+                    sendBtn.disabled = true;
+                    if (status) status.classList.remove('is-visible');
+
+                    try {
+                        await window.emailjs.sendForm(
+                            emailConfig.emailjs.serviceId,
+                            emailConfig.emailjs.templateId,
+                            form
+                        );
+                        showStatus('success', 'Mesajınız başarıyla iletildi. En kısa sürede size geri dönüş yapacağım.');
+                        form.reset();
+                    } catch (err) {
+                        console.error('EmailJS send failed:', err);
+                        showStatus('error', 'Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin veya psikologasyaozcan@gmail.com adresine yazın.');
+                    } finally {
+                        btnText.hidden = false;
+                        btnLoading.hidden = true;
+                        sendBtn.disabled = false;
+                    }
+                });
+            }
+        })();
     </script>
 </body>
 
