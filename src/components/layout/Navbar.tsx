@@ -11,7 +11,7 @@ import { useNavbarScroll } from '@/hooks/useNavbarScroll';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const isScrolled = useNavbarScroll();
-  const activeSection = useActiveSection(['home', 'about', 'services', 'testimonials', 'contact']);
+  const activeSection = useActiveSection(['home', 'about', 'services', 'testimonials', 'blog', 'contact']);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsOpen(false);

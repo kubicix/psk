@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { BlogPostMeta } from '@/types/blog';
 import { formatDate } from '@/lib/blog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +18,18 @@ export function BlogCard({ post, index }: BlogCardProps) {
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Top Gradient Bar */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-secondary scale-x-0 transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-x-100" />
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-secondary scale-x-0 transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-x-100 z-10" />
+
+      {/* Image Container */}
+      <div className="relative h-48 w-full overflow-hidden bg-bg-light">
+        <Image
+          src={post.image}
+          alt={post.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
 
       <div className="p-7 max-[767px]:p-5">
         {/* Tags */}

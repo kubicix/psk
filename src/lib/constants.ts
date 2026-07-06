@@ -18,8 +18,8 @@ export const NAV_LINKS: NavLink[] = [
   { href: '#about', label: 'Hakkımda' },
   { href: '#services', label: 'Hizmetler' },
   { href: '#testimonials', label: 'Referanslar' },
+  { href: '#blog', label: 'Blog' },
   { href: '#contact', label: 'İletişim' },
-  { href: '/blog', label: 'Blog' },
 ];
 
 export const SERVICES: Service[] = [
