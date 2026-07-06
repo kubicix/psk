@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #E6E6FA;
+  --color-secondary: #B6D7FF;
+  --color-accent: #9370DB;
+  --color-text-dark: #2C3E50;
+  --color-text-light: #6C757D;
+  --color-bg-light: #F8F9FF;
+  
+  --animate-pulse-instagram: pulse-instagram 2s infinite;
+}
+
+@keyframes pulse-instagram {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(188, 24, 136, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(188, 24, 136, 0.7);
+  }
+}
+
+/* Base custom styles matching the original project */
+:root {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    scroll-padding-top: 90px;
+  }
+}
+
+body {
+  line-height: 1.6;
+}
+
+/* Nav Link Underline Hover Effect */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Desktop Scroll Snap */
+@media (min-width: 992px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+  section {
+    scroll-snap-align: start;
+  }
+}
+
+/* High DPI Font Smoothing */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Testimonial Quote Mark */
+.testimonial-card-quote::before {
+  content: '"';
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  font-size: 4rem;
+  color: rgba(147, 112, 219, 0.1);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
