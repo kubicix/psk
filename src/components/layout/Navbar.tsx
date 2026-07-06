@@ -14,9 +14,14 @@ export function Navbar() {
   const activeSection = useActiveSection(['home', 'about', 'services', 'testimonials', 'contact']);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setIsOpen(false);
-    
+
+    // If it's a page link (not a hash), let the browser navigate normally
+    if (!href.startsWith('#')) {
+      return;
+    }
+
+    e.preventDefault();
     const targetId = href.replace('#', '');
     const targetElement = document.getElementById(targetId);
     
