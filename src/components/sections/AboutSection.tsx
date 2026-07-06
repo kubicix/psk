@@ -22,6 +22,7 @@ export function AboutSection() {
                   src="/images/asyaozcanpp.jpeg"
                   alt="Psikolog Asya Özcan"
                   fill
+                  sizes="(max-width: 375px) 200px, (max-width: 480px) 220px, (max-width: 767px) 250px, 300px"
                   className="object-cover object-[center_20%]"
                 />
               </div>

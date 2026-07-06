@@ -48,6 +48,7 @@ export function Navbar() {
               src="/images/logo.png"
               alt="Psikolog Asya Özcan Logo"
               fill
+              sizes="(max-width: 767px) 35px, 40px"
               className="object-contain"
             />
           </div>
