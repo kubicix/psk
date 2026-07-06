@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { SITE_URL, GBP_URL } from '@/lib/constants';
 
@@ -122,6 +124,8 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased text-text-dark bg-white m-0 p-0`}>
         {children}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
