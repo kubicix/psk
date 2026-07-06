@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { SITE_URL, GBP_URL } from '@/lib/constants';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -13,10 +14,9 @@ const schemaData = {
   '@context': 'https://schema.org',
   '@type': 'Psychologist',
   'name': 'Psikolog Asya Özcan',
-  'image': 'https://psikologasyaozcan.online/images/logo.png',
-  '@id': 'https://psikologasyaozcan.online',
-  'url': 'https://psikologasyaozcan.online',
-  'telephone': '',
+  'image': `${SITE_URL}/images/logo.png`,
+  '@id': SITE_URL,
+  'url': SITE_URL,
   'address': {
     '@type': 'PostalAddress',
     'addressLocality': 'İzmit',
@@ -28,6 +28,7 @@ const schemaData = {
     'latitude': 40.7622984,
     'longitude': 29.9328223,
   },
+  'hasMap': GBP_URL,
   'openingHoursSpecification': {
     '@type': 'OpeningHoursSpecification',
     'dayOfWeek': [
@@ -44,11 +45,12 @@ const schemaData = {
   'sameAs': [
     'https://www.instagram.com/psikologasyaozcan/',
     'https://www.linkedin.com/in/asya-ozcan/',
+    GBP_URL,
   ],
 };
 
 export const metadata: Metadata = {
-  title: 'Psikolog Asya Özcan | Çocuk, Genç ve Yetişkin Psikolojisi | İzmit, Kocaeli',
+  title: 'Psikolog Asya Özcan | İzmit Çocuk ve Yetişkin Psikoloğu',
   description:
     'Psikolog Asya Özcan - İzmit merkezli psikolog. Çocuk psikolojisi, otizm, depresyon, anksiyete tedavisi. Online ve yüz yüze terapi seansları. MMPI testleri.',
   keywords: [
@@ -68,17 +70,17 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://psikologasyaozcan.online',
+    canonical: SITE_URL,
   },
   openGraph: {
     type: 'website',
-    url: 'https://psikologasyaozcan.online',
+    url: SITE_URL,
     title: 'Psikolog Asya Özcan | Çocuk ve Yetişkin Psikolojisi',
     description:
       'İzmit merkezli psikolog. Çocuk psikolojisi, otizm spektrum bozukluğu, depresyon ve anksiyete tedavisi. Online ve yüz yüze terapi seansları.',
     images: [
       {
-        url: 'https://psikologasyaozcan.online/images/logo.png',
+        url: `${SITE_URL}/images/logo.png`,
         width: 1200,
         height: 630,
         alt: 'Psikolog Asya Özcan Logo',
@@ -92,13 +94,13 @@ export const metadata: Metadata = {
     title: 'Psikolog Asya Özcan | Çocuk ve Yetişkin Psikolojisi',
     description:
       'İzmit merkezli psikolog. Çocuk psikolojisi, otizm, depresyon ve anksiyete tedavisi. Online ve yüz yüze terapi seansları.',
-    images: ['https://psikologasyaozcan.online/images/logo.png'],
+    images: [`${SITE_URL}/images/logo.png`],
   },
   other: {
     'geo.region': 'TR-41',
     'geo.placename': 'İzmit, Kocaeli',
-    'geo.position': '40.7648;29.9342',
-    ICBM: '40.7648, 29.9342',
+    'geo.position': '40.7622984;29.9328223',
+    ICBM: '40.7622984, 29.9328223',
   },
 };
 

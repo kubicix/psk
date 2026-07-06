@@ -9,6 +9,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getAllPostSlugs, getPostBySlug, formatDate } from '@/lib/blog';
 import { BlogPostHeader } from '@/components/blog/BlogPostHeader';
 import { AuthorBio } from '@/components/blog/AuthorBio';
+import { SITE_URL } from '@/lib/constants';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      url: `https://psikologasyaozcan.com.tr/blog/${post.slug}`,
+      url: `${SITE_URL}/blog/${post.slug}`,
       siteName: 'Psikolog Asya Özcan',
       locale: 'tr_TR',
     },
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.description,
     },
     alternates: {
-      canonical: `https://psikologasyaozcan.com.tr/blog/${post.slug}`,
+      canonical: `${SITE_URL}/blog/${post.slug}`,
     },
   };
 }
@@ -67,18 +68,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       '@type': 'Person',
       name: post.author,
       jobTitle: 'Psikolog',
-      url: 'https://psikologasyaozcan.com.tr',
+      url: SITE_URL,
     },
     publisher: {
       '@type': 'Organization',
       name: 'Psikolog Asya Özcan',
-      url: 'https://psikologasyaozcan.com.tr',
+      url: SITE_URL,
     },
     datePublished: post.date,
     dateModified: post.date,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://psikologasyaozcan.com.tr/blog/${post.slug}`,
+      '@id': `${SITE_URL}/blog/${post.slug}`,
     },
   };
 

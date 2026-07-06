@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { getAllPosts } from '@/lib/blog';
 import { BlogCard } from '@/components/blog/BlogCard';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Blog | Psikolog Asya Özcan | Psikoloji Yazıları',
@@ -16,12 +17,12 @@ export const metadata: Metadata = {
     description:
       'Çocuk psikolojisi, depresyon, anksiyete, online terapi ve ruh sağlığı konularında uzman psikolog yazıları.',
     type: 'website',
-    url: 'https://psikologasyaozcan.com.tr/blog',
+    url: `${SITE_URL}/blog`,
     siteName: 'Psikolog Asya Özcan',
     locale: 'tr_TR',
   },
   alternates: {
-    canonical: 'https://psikologasyaozcan.com.tr/blog',
+    canonical: `${SITE_URL}/blog`,
   },
 };
 

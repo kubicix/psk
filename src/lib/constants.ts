@@ -13,6 +13,9 @@ import {
 import { faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { NavLink, Service, Testimonial, GoogleReview, ContactItem, SocialLink } from '@/types';
 
+export const SITE_URL = 'https://www.psikologasyaozcan.com.tr';
+export const GBP_URL = 'https://share.google/qD4DmH3iIr6EYw8Ke';
+
 export const NAV_LINKS: NavLink[] = [
   { href: '#home', label: 'Ana Sayfa' },
   { href: '#about', label: 'Hakkımda' },
@@ -122,7 +125,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     icon: faMapMarkerAlt,
-    href: 'https://www.google.com/maps?q=40.7622984,29.9328223',
+    href: GBP_URL,
     label: 'Konum',
   },
   {
