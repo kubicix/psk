@@ -1,32 +1,73 @@
 import emailjs from '@emailjs/browser';
 
-const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+interface EmailJSConfig {
+  emailjs: {
+    publicKey: string;
+    serviceId: string;
+    templateId: string;
+  };
+}
+
+let activeConfig: {
+  publicKey: string;
+  serviceId: string;
+  templateId: string;
+} | null = null;
 
 let isInitialized = false;
 
-export function initEmailJS(): boolean {
-  if (!PUBLIC_KEY) {
-    console.error('EmailJS Public Key is missing in environment variables');
-    return false;
+// Dynamic config loader matching vanilla project fetch behavior + Env fallback
+export async function loadEmailConfig(): Promise<boolean> {
+  if (isInitialized && activeConfig) return true;
+
+  // 1. Try fetching dev.json from public directory (useful for post-build runtime overrides)
+  try {
+    const response = await fetch('/dev.json');
+    if (response.ok) {
+      const data: EmailJSConfig = await response.json();
+      if (data?.emailjs?.publicKey && data?.emailjs?.serviceId && data?.emailjs?.templateId) {
+        activeConfig = {
+          publicKey: data.emailjs.publicKey,
+          serviceId: data.emailjs.serviceId,
+          templateId: data.emailjs.templateId,
+        };
+        emailjs.init(activeConfig.publicKey);
+        isInitialized = true;
+        console.log('📧 EmailJS initialized from runtime dev.json');
+        return true;
+      }
+    }
+  } catch (error) {
+    console.log('📄 dev.json fetch skipped, checking environment variables');
   }
-  if (!isInitialized) {
-    emailjs.init(PUBLIC_KEY);
+
+  // 2. Fallback to Next.js environment variables (.env.local or build variables)
+  const envPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+  const envServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const envTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
+  if (envPublicKey && envServiceId && envTemplateId) {
+    activeConfig = {
+      publicKey: envPublicKey,
+      serviceId: envServiceId,
+      templateId: envTemplateId,
+    };
+    emailjs.init(activeConfig.publicKey);
     isInitialized = true;
+    console.log('📧 EmailJS initialized from environment variables');
+    return true;
   }
-  return true;
+
+  console.error('⚠️ EmailJS initialization failed: No dev.json or environment variables found');
+  return false;
 }
 
 export async function sendContactForm(formElement: HTMLFormElement): Promise<any> {
-  const initialized = initEmailJS();
-  if (!initialized) {
-    throw new Error('EmailJS not initialized');
+  // Ensure config is loaded before sending
+  const loaded = await loadEmailConfig();
+  if (!loaded || !activeConfig) {
+    throw new Error('EmailJS configuration not loaded');
   }
 
-  if (!SERVICE_ID || !TEMPLATE_ID) {
-    throw new Error('EmailJS Service ID or Template ID is missing in environment variables');
-  }
-
-  return emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formElement);
+  return emailjs.sendForm(activeConfig.serviceId, activeConfig.templateId, formElement);
 }

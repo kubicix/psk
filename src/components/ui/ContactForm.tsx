@@ -9,6 +9,13 @@ export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Preload configuration on mount to match vanilla behavior
+  React.useEffect(() => {
+    import('@/lib/emailjs').then(({ loadEmailConfig }) => {
+      loadEmailConfig();
+    });
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formRef.current) return;
