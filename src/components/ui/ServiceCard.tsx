@@ -17,9 +17,9 @@ export function ServiceCard({ service }: ServiceCardProps) {
         <FontAwesomeIcon icon={service.icon} className="h-12 w-12" />
       </div>
 
-      <h4 className="text-text-dark font-semibold text-xl mb-4 max-[375px]:text-lg">
+      <h3 className="text-text-dark font-semibold text-xl mb-4 max-[375px]:text-lg">
         {service.title}
-      </h4>
+      </h3>
       <p className="text-text-light text-[0.95rem] max-[375px]:text-[0.9rem] leading-[1.6]">
         {service.description}
       </p>

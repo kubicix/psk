@@ -6,9 +6,9 @@ import { CONTACT_ITEMS } from '@/lib/constants';
 export function ContactInfo() {
   return (
     <div className="relative bg-gradient-to-br from-primary to-secondary rounded-[20px] p-[45px] max-[375px]:p-[25px] max-[480px]:p-[25px] overflow-hidden before:content-[''] before:absolute before:-top-1/2 before:-right-1/2 before:w-[200%] before:h-[200%] before:[background:radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_70%)] before:pointer-events-none">
-      <h4 className="text-text-dark font-semibold text-xl mb-6 max-[767px]:text-[1.3rem] relative z-10">
+      <h3 className="text-text-dark font-semibold text-xl mb-6 max-[767px]:text-[1.3rem] relative z-10">
         İletişim Bilgileri
-      </h4>
+      </h3>
       <div className="relative z-10">
         {CONTACT_ITEMS.map((item, index) => (
           <div
@@ -19,9 +19,9 @@ export function ContactInfo() {
               <FontAwesomeIcon icon={item.icon} className="h-5 w-5" />
             </div>
             <div>
-              <h5 className="text-text-dark font-semibold mb-[5px] text-[1rem]">
+              <h4 className="text-text-dark font-semibold mb-[5px] text-[1rem]">
                 {item.title}
-              </h5>
+              </h4>
               <div className="text-text-light text-sm leading-[1.6]">
                 {item.href ? (
                   <a

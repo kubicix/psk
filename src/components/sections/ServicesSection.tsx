@@ -49,9 +49,9 @@ export function ServicesSection() {
                     <FontAwesomeIcon icon={faMapMarkerAlt} className="h-10 w-10" />
                   </div>
                   <div>
-                    <h4 className="text-text-dark font-semibold text-xl mb-[5px]">
+                    <h3 className="text-text-dark font-semibold text-xl mb-[5px]">
                       Hizmet Lokasyonları
-                    </h4>
+                    </h3>
                     <p className="text-accent font-medium m-0">
                       İzmit Merkez Klinik & Online Platform
                     </p>

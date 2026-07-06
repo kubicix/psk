@@ -38,9 +38,9 @@ export function ContactForm() {
 
   return (
     <div className="bg-white rounded-[20px] p-[45px] max-[375px]:p-[25px] max-[480px]:p-[25px] shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 hover:shadow-[0_15px_50px_rgba(147,112,219,0.15)]">
-      <h4 className="text-text-dark font-semibold text-xl mb-6 max-[767px]:text-[1.3rem]">
+      <h3 className="text-text-dark font-semibold text-xl mb-6 max-[767px]:text-[1.3rem]">
         Mesaj Gönderin
-      </h4>
+      </h3>
       <form ref={formRef} onSubmit={handleSubmit} id="contact-form">
         <div className="mb-4">
           <label htmlFor="user_name" className="block text-text-dark font-semibold text-[0.95rem] mb-2 max-[575px]:mb-[5px]">

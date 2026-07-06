@@ -55,6 +55,7 @@ export function HeroSection() {
                     alt="Psikolog Asya Özcan"
                     fill
                     priority
+                    fetchPriority="high"
                     sizes="(max-width: 375px) 220px, (max-width: 480px) 250px, (max-width: 767px) 280px, 360px"
                     className="rounded-full object-cover object-[center_20%] border-8 border-[rgba(255,255,255,0.3)] shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
                   />

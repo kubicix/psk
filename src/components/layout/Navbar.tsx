@@ -46,7 +46,7 @@ export function Navbar() {
         <a
           href="#home"
           onClick={(e) => handleLinkClick(e, '#home')}
-          className="flex items-center text-accent font-semibold text-xl max-[767px]:text-lg group no-underline"
+          className="flex items-center font-semibold text-xl max-[767px]:text-lg group no-underline"
         >
           <div className="relative h-10 w-10 mr-3 overflow-hidden transition-transform duration-300 group-hover:scale-110 max-[767px]:h-[35px] max-[767px]:w-[35px] max-[767px]:mr-2.5">
             <Image
@@ -57,7 +57,7 @@ export function Navbar() {
               className="object-contain"
             />
           </div>
-          <span className="font-semibold text-[1.4rem] max-[375px]:text-[1.1rem] max-[480px]:text-[1.2rem] max-[767px]:text-[1.2rem]">
+          <span className="text-text-dark font-semibold text-[1.4rem] max-[375px]:text-[1.1rem] max-[480px]:text-[1.2rem] max-[767px]:text-[1.2rem]">
             Psikolog Asya Özcan
           </span>
         </a>
