@@ -55,7 +55,7 @@ export function GoogleBusinessCard() {
       {/* Card Header */}
       <div className="relative bg-gradient-to-r from-[#e8eaf6] via-[#c5cae9] to-[#bbdefb] p-7 pb-5 flex items-center gap-[18px] max-[575px]:p-5 max-[575px]:pb-4 max-[575px]:gap-3.5 after:content-[''] after:absolute after:top-3 after:right-3.5 after:w-7 after:h-7 after:bg-[url('data:image/svg+xml,%3Csvg_xmlns=%22http://www.w3.org/2000/svg%22_viewBox=%220_0_48_48%22%3E%3Cpath_fill=%22%234285F4%22_d=%22M24_9.5c3.54_0_6.71_1.22_9.21_3.6l6.85-6.85C35.9_2.38_30.47_0_24_0_14.62_0_6.51_5.38_2.56_13.22l7.98_6.19C12.43_13.72_17.74_9.5_24_9.5z%22/%3E%3Cpath_fill=%22%2334A853%22_d=%22M46.98_24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58_2.96-2.26_5.48-4.78_7.18l7.73_6c4.51-4.18_7.09-10.36_7.09-17.65z%22/%3E%3Cpath_fill=%22%23FBBC05%22_d=%22M10.53_28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92_16.46_0_20.12_0_24c0_3.88.92_7.54_2.56_10.78l7.97-6.19z%22/%3E%3Cpath_fill=%22%23EA4335%22_d=%22M24_48c6.48_0_11.93-2.13_15.89-5.81l-7.73-6c-2.15_1.45-4.92_2.3-8.16_2.3-6.26_0-11.57-4.22-13.47-9.91l-7.98_6.19C6.51_42.62_14.62_48_24_48z%22/%3E%3C/svg%3E')] after:bg-contain after:bg-no-repeat after:opacity-90">
         <Image
-          src="/images/asyaozcanpp.jpeg"
+          src="/images/asyaozcanpp.webp"
           alt="Psikolog Asya Özcan"
           width={72}
           height={72}

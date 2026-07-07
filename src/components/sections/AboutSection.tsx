@@ -19,7 +19,7 @@ export function AboutSection() {
             <FadeIn>
               <div className="relative w-[300px] h-[300px] max-[375px]:w-[200px] max-[375px]:h-[200px] max-[480px]:w-[220px] max-[480px]:h-[220px] max-[767px]:w-[250px] max-[767px]:h-[250px] rounded-full border-8 border-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)] cursor-pointer overflow-hidden">
                 <Image
-                  src="/images/asyaozcanpp.jpeg"
+                  src="/images/asyaozcanpp.webp"
                   alt="Psikolog Asya Özcan"
                   fill
                   sizes="(max-width: 375px) 200px, (max-width: 480px) 220px, (max-width: 767px) 250px, 300px"

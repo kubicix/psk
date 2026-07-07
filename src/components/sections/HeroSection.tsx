@@ -51,7 +51,7 @@ export function HeroSection() {
               <div className="w-[400px] h-[400px] bg-[rgba(255,255,255,0.2)] rounded-full flex items-center justify-center backdrop-blur-[10px] p-5 max-[375px]:w-[250px] max-[375px]:h-[250px] max-[375px]:my-[15px] max-[480px]:w-[280px] max-[480px]:h-[280px] max-[480px]:my-5 max-[767px]:w-[320px] max-[767px]:h-[320px] max-[767px]:my-5 max-h-[600px]:landscape:w-[250px] max-h-[600px]:landscape:h-[250px]">
                 <div className="relative w-[360px] h-[360px] max-[375px]:w-[220px] max-[375px]:h-[220px] max-[480px]:w-[250px] max-[480px]:h-[250px] max-[767px]:w-[280px] max-[767px]:h-[280px] max-h-[600px]:landscape:w-[220px] max-h-[600px]:landscape:h-[220px]">
                   <Image
-                    src="/images/asyaozcanpp.jpeg"
+                    src="/images/asyaozcanpp.webp"
                     alt="Psikolog Asya Özcan"
                     fill
                     priority
