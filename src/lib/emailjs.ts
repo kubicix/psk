@@ -31,7 +31,9 @@ export async function loadEmailConfig(): Promise<boolean> {
   return false;
 }
 
-export async function sendContactForm(formElement: HTMLFormElement): Promise<any> {
+export async function sendContactForm(
+  formElement: HTMLFormElement
+): Promise<Awaited<ReturnType<typeof emailjs.sendForm>>> {
   // Ensure config is loaded before sending
   const loaded = await loadEmailConfig();
   if (!loaded || !activeConfig) {

@@ -8,13 +8,13 @@ import {
   faMapMarkerAlt,
   faEnvelope,
   faClock,
-  faLocationArrow,
 } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { NavLink, Service, Testimonial, GoogleReview, ContactItem, SocialLink } from '@/types';
 
 export const SITE_URL = 'https://www.psikologasyaozcan.com.tr';
 export const GBP_URL = 'https://share.google/qD4DmH3iIr6EYw8Ke';
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-default.jpg`;
 
 export const NAV_LINKS: NavLink[] = [
   { href: '#home', label: 'Ana Sayfa' },
@@ -22,6 +22,7 @@ export const NAV_LINKS: NavLink[] = [
   { href: '#services', label: 'Hizmetler' },
   { href: '#testimonials', label: 'Referanslar' },
   { href: '#blog', label: 'Blog' },
+  { href: '#faq', label: 'SSS' },
   { href: '#contact', label: 'İletişim' },
 ];
 
@@ -30,31 +31,37 @@ export const SERVICES: Service[] = [
     icon: faUser,
     title: 'Bireysel Terapi',
     description: 'Kişisel zorluklar, anksiyete, depresyon and diğer ruhsal sağlık sorunları için birebir destek sağlıyorum.',
+    href: '/hizmetler/bireysel-terapi',
   },
   {
     icon: faPuzzlePiece,
     title: 'Özel Eğitim & Otizm',
     description: 'Otizm spektrum bozukluğu, gelişimsel gecikmeler ve öğrenme güçlüğü olan çocuklar için bireyselleştirilmiş eğitim ve terapi programları.',
+    href: '/hizmetler/otizm-ozel-egitim',
   },
   {
     icon: faHeartBroken,
     title: 'Depresyon & Anksiyete',
     description: 'Depresyon, yaygın anksiyete bozukluğu, sosyal fobi ve panik atak gibi duygudurum bozuklukları için terapi desteği.',
+    href: '/hizmetler/depresyon-terapisi',
   },
   {
     icon: faChild,
     title: 'Çocuk & Genç Psikolojisi',
     description: 'Okul fobisi, davranış sorunları, ergenlik dönemi zorlukları ve kimlik arayışı problemleri için yaş grubuna uygun terapi yaklaşımları.',
+    href: '/hizmetler/cocuk-ergen-psikolojisi',
   },
   {
     icon: faLaptop,
     title: 'Online Seanslar',
     description: 'İzmit dışından da erişebileceğiniz güvenli online terapi seansları. Esnek saatler ve gizlilik garantisi ile uzaktan psikolojik destek.',
+    href: '/hizmetler/online-terapi',
   },
   {
     icon: faClipboardCheck,
     title: 'MMPI & Objektif Testler',
     description: 'Sertifikalı MMPI ve diğer objektif psikolojik testlerle profesyonel değerlendirme ve tanı destek süreçleri sunuyorum.',
+    href: '/hizmetler/mmpi-testi',
   },
 ];
 

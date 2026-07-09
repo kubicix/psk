@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { FadeIn } from '@/components/ui/FadeIn';
 
@@ -36,13 +37,21 @@ export function HeroSection() {
                 ruh sağlığı alanında uzmanlaşmış hizmet sunuyorum. Özel eğitim, gelişimsel bozukluklar,
                 depresyon ve anksiyete konularında size destek oluyorum.
               </p>
-              <a
-                href="#contact"
-                onClick={handleCTAClick}
-                className="inline-block relative overflow-hidden bg-accent hover:bg-opacity-95 text-white font-semibold py-3.5 px-[35px] rounded-[30px] transition-all duration-300 shadow-[0_4px_15px_rgba(147,112,219,0.3)] hover:-translate-y-[3px] hover:shadow-[0_8px_25px_rgba(147,112,219,0.5)] active:translate-y-[-1px] max-[375px]:text-[0.95rem] max-[375px]:py-2.5 max-[375px]:px-[25px] max-[575px]:w-full max-[575px]:mt-2.5 max-[575px]:min-h-[44px]"
-              >
-                İletişime Geç
-              </a>
+              <div className="flex flex-wrap items-center gap-4 max-[575px]:flex-col max-[575px]:items-stretch max-[767px]:justify-center">
+                <a
+                  href="#contact"
+                  onClick={handleCTAClick}
+                  className="inline-block relative overflow-hidden bg-accent hover:bg-opacity-95 text-white text-center font-semibold py-3.5 px-[35px] rounded-[30px] transition-all duration-300 shadow-[0_4px_15px_rgba(147,112,219,0.3)] hover:-translate-y-[3px] hover:shadow-[0_8px_25px_rgba(147,112,219,0.5)] active:translate-y-[-1px] max-[375px]:text-[0.95rem] max-[375px]:py-2.5 max-[375px]:px-[25px] max-[575px]:w-full max-[575px]:mt-2.5 max-[575px]:min-h-[44px]"
+                >
+                  İletişime Geç
+                </a>
+                <Link
+                  href="/hizmetler"
+                  className="inline-block text-center font-semibold py-3.5 px-[35px] rounded-[30px] border-2 border-accent text-accent bg-white/60 hover:bg-white transition-all duration-300 no-underline max-[375px]:text-[0.95rem] max-[375px]:py-2.5 max-[375px]:px-[25px] max-[575px]:w-full max-[575px]:min-h-[44px]"
+                >
+                  Hizmetleri İncele
+                </Link>
+              </div>
             </FadeIn>
           </div>
 

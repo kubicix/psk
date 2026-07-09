@@ -39,6 +39,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     title: data.title,
     slug: data.slug || slug,
     date: data.date,
+    updated: data.updated,
     author: data.author || 'Psikolog Asya Özcan',
     description: data.description,
     tags: data.tags || [],
@@ -51,6 +52,10 @@ export function getPostBySlug(slug: string): BlogPost | null {
 /**
  * Get only metadata (without content) for a post
  */
+export function getPostMetaBySlug(slug: string): BlogPostMeta | null {
+  return getPostMeta(slug);
+}
+
 function getPostMeta(slug: string): BlogPostMeta | null {
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
@@ -62,6 +67,7 @@ function getPostMeta(slug: string): BlogPostMeta | null {
     title: data.title,
     slug: data.slug || slug,
     date: data.date,
+    updated: data.updated,
     author: data.author || 'Psikolog Asya Özcan',
     description: data.description,
     tags: data.tags || [],

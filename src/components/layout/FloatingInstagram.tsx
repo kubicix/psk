@@ -12,7 +12,7 @@ export function FloatingInstagram() {
       aria-label="Instagram DM'den Ulaş"
     >
       <span className="absolute right-[70px] bg-[rgba(0,0,0,0.85)] text-white py-2 px-[15px] rounded-[20px] whitespace-nowrap text-sm font-medium opacity-0 invisible translate-x-2 group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300 pointer-events-none max-[768px]:hidden">
-        Instagram DM'den Ulaş
+        Instagram DM&apos;den Ulaş
       </span>
       <FontAwesomeIcon icon={faInstagram} className="transition-transform duration-300 group-hover:rotate-[15deg] w-[28px] h-[28px] max-[768px]:w-[24px] max-[768px]:h-[24px] max-[375px]:w-[22px] max-[375px]:h-[22px]" />
     </a>

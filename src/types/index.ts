@@ -9,6 +9,7 @@ export interface Service {
   icon: IconDefinition;
   title: string;
   description: string;
+  href: string;
 }
 
 export interface Testimonial {

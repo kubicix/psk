@@ -2,12 +2,21 @@
 
 > İzmit (Kocaeli) merkezli psikolog. Çocuk, genç ve yetişkin psikolojisi, otizm spektrum bozukluğu, depresyon, anksiyete tedavisi. Online ve yüz yüze terapi seansları, MMPI ve objektif testler.
 
-Asya Özcan, İzmit'te hizmet veren bir psikologdur. Bireysel terapi, çocuk ve genç psikolojisi, özel eğitim ve otizm desteği, depresyon ve anksiyete tedavisi, online terapi seansları ve MMPI dahil objektif psikolojik testler sunmaktadır.
+Asya Özcan, İzmit'te hizmet veren bir psikologdur. Bireysel terapi, çocuk ve genç psikolojisi, özel eğitim ve otizm desteği, depresyon ve anksiyete tedavisi, online terapi seansları ve MMPI dahil objektif psikolojik testler sunmaktadır. Fenerbahçe Üniversitesi Psikoloji Bölümü onur derecesi mezunudur; Türkçe, İngilizce ve Almanca dillerinde hizmet verebilmektedir.
 
 ## Sayfalar
 
 - [Ana Sayfa](https://www.psikologasyaozcan.com.tr/): Hakkında, hizmetler, referanslar ve iletişim bilgileri
+- [Hizmetler](https://www.psikologasyaozcan.com.tr/hizmetler): Tüm psikolojik destek hizmetleri
+- [Bireysel Terapi](https://www.psikologasyaozcan.com.tr/hizmetler/bireysel-terapi): Yetişkinler için birebir psikolojik destek
+- [Çocuk ve Ergen Psikolojisi](https://www.psikologasyaozcan.com.tr/hizmetler/cocuk-ergen-psikolojisi): Okul fobisi, davranış sorunları, ergenlik dönemi desteği
+- [Depresyon Terapisi](https://www.psikologasyaozcan.com.tr/hizmetler/depresyon-terapisi): Depresyon belirtileri ve terapi süreci
+- [Anksiyete Terapisi](https://www.psikologasyaozcan.com.tr/hizmetler/anksiyete-terapisi): Kaygı bozukluğu, panik atak, sosyal fobi
+- [Online Terapi](https://www.psikologasyaozcan.com.tr/hizmetler/online-terapi): Türkiye'nin her yerinden video görüşmeyle terapi
+- [Otizm ve Özel Eğitim](https://www.psikologasyaozcan.com.tr/hizmetler/otizm-ozel-egitim): Otizm spektrum bozukluğu ve gelişimsel destek
+- [MMPI ve Objektif Testler](https://www.psikologasyaozcan.com.tr/hizmetler/mmpi-testi): Kişilik değerlendirmesi ve çocuk testleri
 - [Blog](https://www.psikologasyaozcan.com.tr/blog): Çocuk psikolojisi, depresyon, anksiyete ve online terapi üzerine yazılar
+- [RSS](https://www.psikologasyaozcan.com.tr/feed.xml): Blog yazıları RSS akışı
 
 ## İletişim
 
@@ -15,3 +24,4 @@ Asya Özcan, İzmit'te hizmet veren bir psikologdur. Bireysel terapi, çocuk ve 
 - Instagram: https://www.instagram.com/psikologasyaozcan/
 - LinkedIn: https://www.linkedin.com/in/asya-ozcan/
 - Konum: İzmit, Kocaeli, Türkiye
+- Çalışma saatleri: Pazartesi - Cumartesi 09:00 - 18:00

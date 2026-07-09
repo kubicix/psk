@@ -11,7 +11,7 @@ import { useNavbarScroll } from '@/hooks/useNavbarScroll';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const isScrolled = useNavbarScroll();
-  const activeSection = useActiveSection(['home', 'about', 'services', 'testimonials', 'blog', 'contact']);
+  const activeSection = useActiveSection(['home', 'about', 'services', 'testimonials', 'blog', 'faq', 'contact']);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsOpen(false);
@@ -67,12 +67,15 @@ export function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           className="lg:hidden border-none bg-transparent p-1 focus:outline-none"
           aria-label="Menüyü Aç/Kapat"
+          aria-expanded={isOpen}
+          aria-controls="main-nav-links"
         >
           <FontAwesomeIcon icon={faBars} className="text-accent text-[1.2rem]" />
         </button>
 
         {/* Nav Links */}
         <div
+          id="main-nav-links"
           className={`w-full lg:w-auto lg:flex lg:items-center ${
             isOpen ? 'block' : 'hidden lg:block'
           } max-[991px]:mt-4 max-[991px]:bg-[rgba(255,255,255,0.98)] max-[991px]:rounded-lg max-[991px]:p-2.5 max-[991px]:shadow-[0_5px_15px_rgba(0,0,0,0.1)]`}

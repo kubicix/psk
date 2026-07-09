@@ -8,6 +8,7 @@ import { sendContactForm } from '@/lib/emailjs';
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   // Preload configuration on mount to match vanilla behavior
   React.useEffect(() => {
@@ -20,17 +21,20 @@ export function ContactForm() {
     e.preventDefault();
     if (!formRef.current) return;
 
+    // Honeypot: hidden field filled only by bots
+    const honeypot = formRef.current.elements.namedItem('website') as HTMLInputElement | null;
+    if (honeypot?.value) return;
+
     setIsSubmitting(true);
+    setStatus('idle');
 
     try {
       await sendContactForm(formRef.current);
-      alert('✅ Mesajınız başarıyla gönderildi! En kısa sürede size geri dönüş yapacağım.');
+      setStatus('success');
       formRef.current.reset();
     } catch (error) {
       console.error('Email send error:', error);
-      alert(
-        '❌ Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin veya doğrudan mail adresime yazın: psikologasyaozcan@gmail.com'
-      );
+      setStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -42,6 +46,11 @@ export function ContactForm() {
         Mesaj Gönderin
       </h3>
       <form ref={formRef} onSubmit={handleSubmit} id="contact-form">
+        {/* Honeypot field - hidden from users, catches spam bots */}
+        <div className="absolute -left-[9999px]" aria-hidden="true">
+          <label htmlFor="website">Web siteniz</label>
+          <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+        </div>
         <div className="mb-4">
           <label htmlFor="user_name" className="block text-text-dark font-semibold text-[0.95rem] mb-2 max-[575px]:mb-[5px]">
             Adınız Soyadınız
@@ -109,6 +118,23 @@ export function ContactForm() {
             <span>Mesaj Gönder</span>
           )}
         </button>
+
+        <div role="status" aria-live="polite">
+          {status === 'success' && (
+            <p className="mt-4 p-3.5 rounded-[12px] bg-[rgba(22,163,74,0.08)] text-[#15803d] text-sm font-medium m-0">
+              Mesajınız başarıyla gönderildi! En kısa sürede size geri dönüş yapacağım.
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="mt-4 p-3.5 rounded-[12px] bg-[rgba(220,38,38,0.08)] text-[#b91c1c] text-sm font-medium m-0">
+              Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin veya doğrudan{' '}
+              <a href="mailto:psikologasyaozcan@gmail.com" className="underline text-inherit">
+                psikologasyaozcan@gmail.com
+              </a>{' '}
+              adresine yazın.
+            </p>
+          )}
+        </div>
       </form>
     </div>
   );
